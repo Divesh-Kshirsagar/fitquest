@@ -1,0 +1,60 @@
+# Built application files
+*.apk
+*.ap_
+*.aab
+
+# Files for the ART/Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+out/
+release/
+
+# Gradle files
+.gradle/
+build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Secrets and API keys
+secrets.properties
+*.jks
+*.keystore
+
+# IntelliJ IDEA
+*.iml
+.idea/
+*.ipr
+*.iws
+
+# Android Studio
+.navigation/
+captures/
+.externalNativeBuild
+.cxx
+
+# Mac
+.DS_Store
+
+# Android Profiling
+*.hprof
+
+# NDK
+obj/
+
+# Kotlin
+*.kotlin_module
+
+# Log Files
+*.log
+
+# Markdown documentation (except README)
+*.md
+!README.md
+!readme.md
