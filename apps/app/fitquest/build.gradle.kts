@@ -5,19 +5,37 @@ plugins {
     id("com.google.devtools.ksp")
 }
 
-import java.util.Properties
-
-val envProperties = Properties().apply {
+val envProperties: Map<String, String> = run {
     val envFile = rootProject.file(".env")
-    if (envFile.exists()) {
-        envFile.inputStream().use(::load)
+    if (!envFile.exists()) {
+        logger.warn(".env file not found at: ${envFile.absolutePath}")
+        emptyMap()
+    } else {
+        envFile.readLines()
+            .mapNotNull { line ->
+                val trimmed = line.trim()
+                if (trimmed.isEmpty() || trimmed.startsWith("#") || !trimmed.contains("=")) {
+                    null
+                } else {
+                    val key = trimmed.substringBefore("=").trim()
+                    val value = trimmed.substringAfter("=", "").trim()
+                    key to value
+                }
+            }
+            .toMap()
     }
 }
 
+fun String.cleanEnvValue(): String = trim().trim('"').trim('\'')
+
 fun envOrDefault(name: String, default: String = ""): String {
-    return providers.environmentVariable(name).orNull
-        ?: envProperties.getProperty(name)
-        ?: default
+    val envValue = System.getenv(name)?.cleanEnvValue()
+    if (!envValue.isNullOrEmpty()) return envValue
+
+    val fileValue = envProperties[name]?.cleanEnvValue()
+    if (!fileValue.isNullOrEmpty()) return fileValue
+
+    return default
 }
 
 android {
@@ -34,12 +52,14 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         val mapTilerApiKey = envOrDefault("MAPTILER_API_KEY")
-        val mapTilerStyleUrl = envOrDefault(
-            "MAPTILER_STYLE_URL",
-            "https://api.maptiler.com/maps/streets/style.json?key=$mapTilerApiKey"
-        )
+        val defaultMapStyleUrl = "https://api.maptiler.com/maps/streets-v2/style.json?key=$mapTilerApiKey"
+        val mapTilerStyleUrl = envOrDefault("MAPTILER_STYLE_URL", defaultMapStyleUrl)
         buildConfigField("String", "MAPTILER_API_KEY", "\"$mapTilerApiKey\"")
         buildConfigField("String", "MAPTILER_STYLE_URL", "\"$mapTilerStyleUrl\"")
+
+        if (mapTilerApiKey.isEmpty()) {
+            logger.warn("MAPTILER_API_KEY is empty. Map tiles will fail to load.")
+        }
     }
 
     buildTypes {
@@ -88,6 +108,8 @@ dependencies {
 
     // TODO: Re-enable MapLibre once its Maven repository/version is finalized.
 
+    // Source: https://mvnrepository.com/artifact/org.maplibre.gl/android-sdk
+    implementation("org.maplibre.gl:android-sdk:13.0.2")
     // Local persistence for captured hexes.
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)

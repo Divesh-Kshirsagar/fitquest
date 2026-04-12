@@ -16,7 +16,9 @@ import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {
     private val captureScreenModel: CaptureScreenModel by inject()
-    private val h3Core: H3Core? by inject()
+    private val h3CoreResult: Result<H3Core> by inject()
+    private val h3Core: H3Core?
+        get() = h3CoreResult.getOrNull()
 
     private val permissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { }
