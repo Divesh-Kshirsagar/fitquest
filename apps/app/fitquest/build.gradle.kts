@@ -104,7 +104,8 @@ dependencies {
 
     // Sensor/location capture and spatial indexing.
     implementation(libs.google.play.services.location)
-    implementation(libs.uber.h3)
+    implementation("com.uber:h3-android:4.4.0")
+// Note: You can also bump this to "4.4.0" if you want the latest version
 
     // TODO: Re-enable MapLibre once its Maven repository/version is finalized.
 
