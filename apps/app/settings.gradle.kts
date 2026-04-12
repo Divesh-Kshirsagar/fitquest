@@ -20,5 +20,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "MobileApp"
-include(":fitquest")
- 
+include(":app")
+project(":app").projectDir = file("fitquest")
