@@ -5,4 +5,5 @@ SQLAlchemy
 pydantic-settings
 python-jose[cryptography]
 alembic
-SQLModel
+SQLModelasyncpg
+supabase
