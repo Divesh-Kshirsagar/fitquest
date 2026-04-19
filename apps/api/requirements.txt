@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+sqlmodel
+SQLAlchemy
+pydantic-settings
+python-jose[cryptography]
+alembic
+SQLModel
