@@ -86,10 +86,21 @@ com.example.mobileapp/
 │   └── sensors/          # Location & step sensor managers
 ├── di/                   # Koin dependency injection module
 ├── features/capture/     # CaptureScreenModel (Orbit MVI), CaptureState
-└── ui/
-    ├── capture/          # CurrentRunScreen (Compose + MapLibre)
-    └── theme/            # Material 3 theme
+├── ui/
+│   ├── capture/          # CurrentRunScreen (Compose + MapLibre)
+│   └── theme/            # Material 3 theme
+└── docs/                 # Detailed technical documentation
 ```
+
+## Documentation
+
+For a deeper dive into specific components, refer to the following guides:
+
+- [Architecture](docs/architecture.md) — Patterns, DI, and data flow.
+- [Hex System](docs/hex-system.md) — Uber H3, resolutions, and GeoJSON mapping.
+- [Capture Engine](docs/capture-engine.md) — Tracking sessions and capture mechanics.
+- [Sensors & Simulators](docs/sensors-and-simulators.md) — Hardware sensor management and dev tools.
+- [Persistence](docs/persistence.md) — Room database and repository pattern.
 
 ## License
 

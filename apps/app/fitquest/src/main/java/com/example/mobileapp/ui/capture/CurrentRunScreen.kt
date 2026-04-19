@@ -40,6 +40,8 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import cafe.adriel.voyager.koin.getScreenModel
+import cafe.adriel.voyager.core.screen.Screen
 import com.example.mobileapp.BuildConfig
 import com.example.mobileapp.core.permissions.PermissionManager
 import com.example.mobileapp.features.capture.CaptureScreenModel
@@ -64,13 +66,13 @@ import org.maplibre.android.style.sources.GeoJsonSource
 // Top-level screen: permission gate → map
 // ─────────────────────────────────────────────────────────────────────────────
 
-@SuppressLint("MissingPermission")
-@Composable
-fun CurrentRunScreen(
-    screenModel: CaptureScreenModel,
-    modifier: Modifier = Modifier
-) {
-    val context = LocalContext.current
+class CurrentRunScreen : Screen {
+    @SuppressLint("MissingPermission")
+    @Composable
+    override fun Content() {
+        val modifier: Modifier = Modifier
+        val screenModel = getScreenModel<CaptureScreenModel>()
+        val context = LocalContext.current
     var permissionsGranted by remember { mutableStateOf(PermissionManager.hasAllPermissions(context)) }
     var permanentlyDenied by remember { mutableStateOf(false) }
 
@@ -108,6 +110,7 @@ fun CurrentRunScreen(
     Box(modifier = modifier.fillMaxSize()) {
         CaptureMap(
             state = state,
+            screenModel = screenModel,
             modifier = Modifier.fillMaxSize()
         )
 
@@ -139,6 +142,7 @@ fun CurrentRunScreen(
             Text(if (state.isTracking) "Stop Capture" else "Start Capture")
         }
     }
+}
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -192,6 +196,7 @@ private fun PermissionGateScreen(
 @Composable
 private fun CaptureMap(
     state: CaptureState,
+    screenModel: CaptureScreenModel,
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
@@ -210,6 +215,19 @@ private fun CaptureMap(
             getMapAsync { mapLibreMap ->
                 mapLibreMap.setStyle(Style.Builder().fromUri(BuildConfig.MAPTILER_STYLE_URL)) { style ->
                     ensureHexLayers(style)
+                }
+                
+                // Add Map Idle Listener for Backend Sync
+                mapLibreMap.addOnCameraIdleListener {
+                    val bounds = mapLibreMap.projection.visibleRegion.latLngBounds
+                    val zoom = mapLibreMap.cameraPosition.zoom
+                    screenModel.onMapIdle(
+                        minLat = bounds.southWest.latitude,
+                        minLng = bounds.southWest.longitude,
+                        maxLat = bounds.northEast.latitude,
+                        maxLng = bounds.northEast.longitude,
+                        zoom = zoom
+                    )
                 }
             }
         }

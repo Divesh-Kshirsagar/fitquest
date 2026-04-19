@@ -5,6 +5,8 @@ import com.example.mobileapp.core.capture.HexCaptureEngine
 import com.example.mobileapp.core.data.local.HexRepository
 import com.example.mobileapp.core.geo.HexGeoJsonMapper
 import com.example.mobileapp.core.geo.HexIndexer
+import com.example.mobileapp.core.network.FitQuestApi
+import com.example.mobileapp.core.network.models.RunSyncPayload
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -16,10 +18,13 @@ import org.orbitmvi.orbit.container
 import org.orbitmvi.orbit.syntax.simple.intent
 import org.orbitmvi.orbit.syntax.simple.reduce
 
+import kotlinx.coroutines.launch
+
 class CaptureScreenModel(
     private val hexCaptureEngine: HexCaptureEngine,
     hexRepository: HexRepository,
-    private val hexIndexer: HexIndexer
+    private val hexIndexer: HexIndexer,
+    private val api: FitQuestApi
 ) : ScreenModel, ContainerHost<CaptureState, Nothing> {
 
     // TODO(refactor-capture-state): migrate captured hex storage to LinkedHashSet in state/event reducers.
@@ -96,8 +101,48 @@ class CaptureScreenModel(
     fun onToggleTracking() = intent {
         if (state.isTracking) {
             hexCaptureEngine.stopTracking()
+            
+            // Sync final data to backend
+            val finalStepsMap = hexCaptureEngine.state.value.hexesToSteps
+            val totalSteps = hexCaptureEngine.state.value.sessionSteps
+            
+            val payload = RunSyncPayload(
+                total_session_steps = totalSteps,
+                hexes_to_steps = finalStepsMap
+            )
+            
+            screenModelScope.launch(Dispatchers.IO) {
+                try {
+                    val result = api.syncRunSession(payload)
+                    intent { reduce { state.copy(syncSummary = result) } }
+                } catch (e: Exception) {
+                    println("API Sync Error: ${e.message}")
+                    // TODO: Handle offline queue via Room DB
+                }
+            }
         } else {
             hexCaptureEngine.startTracking()
+        }
+    }
+
+    fun onMapIdle(minLat: Double, minLng: Double, maxLat: Double, maxLng: Double, zoom: Double) = intent {
+        screenModelScope.launch(Dispatchers.IO) {
+            try {
+                val viewportData = api.getMapViewport(
+                    minLat = minLat,
+                    minLng = minLng,
+                    maxLat = maxLat,
+                    maxLng = maxLng,
+                    zoomLevel = zoom
+                )
+                
+                // Convert viewportData to GeoJSON formats - here we stub the conversion
+                // to avoid blocking the main thread.
+                // In production, map MapViewportResponse to GeoJson feature collections.
+                
+            } catch (e: Exception) {
+                println("API Viewport Fetch Error: ${e.message}")
+            }
         }
     }
 

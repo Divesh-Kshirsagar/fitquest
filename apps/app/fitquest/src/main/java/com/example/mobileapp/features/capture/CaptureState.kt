@@ -1,6 +1,7 @@
 package com.example.mobileapp.features.capture
 
 import com.example.mobileapp.core.model.GeoPoint
+import com.example.mobileapp.core.network.models.RunSyncSummary
 
 data class CaptureState(
     val isTracking: Boolean = false,
@@ -10,6 +11,10 @@ data class CaptureState(
     val sessionCapturedHexes: List<String> = emptyList(),
     val historicalCapturedHexes: List<String> = emptyList(),
     val allCapturedHexes: List<String> = emptyList(),
+
+    // Network & Multiplayer Sync
+    val syncSummary: RunSyncSummary? = null,
+    val multiplayerGeoJson: String = "",
 
     // Pre-computed GeoJSON strings for the map layers.
     // Built on Dispatchers.Default to keep the UI thread free and avoid "skipped frames".
