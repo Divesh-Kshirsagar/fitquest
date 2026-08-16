@@ -10,6 +10,8 @@ import com.example.mobileapp.core.geo.UberH3HexIndexer
 import com.example.mobileapp.core.sensors.LocationTrackingManager
 import com.example.mobileapp.core.sensors.StepSensorManager
 import com.example.mobileapp.features.capture.CaptureScreenModel
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import com.example.mobileapp.core.network.FitQuestApi
@@ -18,12 +20,30 @@ import org.koin.dsl.module
 val appModule = module {
 
     single {
+        // ── Networking ────────────────────────────────────────────────────────
+        // On a real device (USB debugging), 10.0.2.2 does NOT resolve — that
+        // alias only works inside the Android Emulator.
+        // Run `adb reverse tcp:8000 tcp:8000` once after plugging in your phone,
+        // then 127.0.0.1:8000 on the device tunnels to localhost:8000 on your machine.
+        //
+        // TODO(production): Add a real OkHttp auth interceptor here that injects
+        // the Supabase JWT from your auth store before switching to a real backend.
+        val loggingInterceptor = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+
+        val client = OkHttpClient.Builder()
+            .addInterceptor(loggingInterceptor)
+            .build()
+
         Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8000/") // 10.0.2.2 maps to localhost in Android Emulator
+            .baseUrl("http://127.0.0.1:8000/")
+            .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(FitQuestApi::class.java)
     }
+
 
     // ── Dev/Testing Toggles ──────────────────────────────────────────────────
     // TODO(TESTING): Set these to `true` to simulate walk & steps without real sensors.
@@ -31,7 +51,7 @@ val appModule = module {
     //  - useDevSteps    = true  → synthetic 2-steps-per-second stream
     //  Set BOTH to `false` for real device testing with actual GPS + step counter.
     val useDevLocation = false
-    val useDevSteps = false
+    val useDevSteps = true
     // ─────────────────────────────────────────────────────────────────────────
 
     single {
@@ -51,8 +71,11 @@ val appModule = module {
 
     single { HexCaptureEngine(get(), get(), get(), get()) }
 
-    // CaptureScreenModel now takes HexIndexer for off-thread GeoJSON computation.
-    // TODO: If multiple screens need independent sessions, switch this to a scoped factory.
-    single { CaptureScreenModel(get(), get(), get(), get()) }
+    // factory (not single) so Voyager can properly scope and dispose the
+    // ScreenModel when the screen leaves the backstack. A singleton would keep
+    // the Orbit container alive forever and cause stale state on re-entry.
+    factory { CaptureScreenModel(get(), get(), get(), get()) }
 }
+
+
 

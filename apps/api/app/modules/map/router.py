@@ -1,10 +1,10 @@
 import uuid
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlmodel import Session
 
-from app.api.dependencies import get_db
-from app.modules.map.schemas import HexCreate, HexResponse, HexUpdate, ViewportQuery
+from app.api.dependencies import get_db, get_current_user
+from app.modules.map.schemas import HexCreate, HexResponse, HexUpdate, ViewportQuery, MapViewportResponse
 from app.modules.map.service import (
     create_hex,
     get_hex_by_id,
@@ -16,13 +16,31 @@ from app.modules.map.service import (
 router = APIRouter()
 
 
-@router.post("/viewport", response_model=list[HexResponse])
+@router.get("/viewport", response_model=MapViewportResponse)
 def viewport_endpoint(
-    _: ViewportQuery, db: Session = Depends(get_db)
-) -> list[HexResponse]:
-    """Get all hexes in the current viewport."""
-    rows = get_hexes_for_viewport(db)
-    return [HexResponse.model_validate(row) for row in rows]
+    min_lat: float = Query(...),
+    min_lng: float = Query(...),
+    max_lat: float = Query(...),
+    max_lng: float = Query(...),
+    zoom_level: float = Query(...),
+    db: Session = Depends(get_db),
+    current_user: dict = Depends(get_current_user),
+) -> MapViewportResponse:
+    """Get all hexes visible in the current map viewport.
+    
+    Called by the Android client on every camera-idle event.
+    Requires a valid Bearer token (Supabase JWT).
+    """
+    query = ViewportQuery(
+        min_lat=min_lat,
+        min_lng=min_lng,
+        max_lat=max_lat,
+        max_lng=max_lng,
+        zoom_level=zoom_level,
+    )
+    user_id = uuid.UUID(current_user["id"])
+    return get_hexes_for_viewport(db, query, user_id)
+
 
 
 @router.get("/{hex_id}", response_model=HexResponse)

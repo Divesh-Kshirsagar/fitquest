@@ -40,7 +40,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
-import cafe.adriel.voyager.koin.getScreenModel
+import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.core.screen.Screen
 import com.example.mobileapp.BuildConfig
 import com.example.mobileapp.core.permissions.PermissionManager
@@ -71,7 +71,7 @@ class CurrentRunScreen : Screen {
     @Composable
     override fun Content() {
         val modifier: Modifier = Modifier
-        val screenModel = getScreenModel<CaptureScreenModel>()
+        val screenModel = koinScreenModel<CaptureScreenModel>()
         val context = LocalContext.current
     var permissionsGranted by remember { mutableStateOf(PermissionManager.hasAllPermissions(context)) }
     var permanentlyDenied by remember { mutableStateOf(false) }
