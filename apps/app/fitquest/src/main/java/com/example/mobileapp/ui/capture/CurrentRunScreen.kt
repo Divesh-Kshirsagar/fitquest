@@ -66,6 +66,7 @@ import org.orbitmvi.orbit.compose.collectAsState
 import org.maplibre.android.camera.CameraPosition
 import org.maplibre.android.camera.CameraUpdateFactory
 import org.maplibre.android.geometry.LatLng
+import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.maps.MapLibreMapOptions
 import org.maplibre.android.maps.MapView
 import org.maplibre.android.maps.Style
@@ -372,6 +373,46 @@ private fun PermissionGateScreen(
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// Standard Map Style (CARTO Voyager / OSM raster tiles - zero API key/env dependency)
+// ─────────────────────────────────────────────────────────────────────────────
+
+private const val STANDARD_MAP_STYLE_JSON = """{
+  "version": 8,
+  "name": "StandardMap",
+  "sources": {
+    "standard-tiles": {
+      "type": "raster",
+      "tiles": [
+        "https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
+        "https://b.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
+        "https://c.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
+        "https://d.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png"
+      ],
+      "tileSize": 256,
+      "maxzoom": 20,
+      "attribution": "© OpenStreetMap contributors, © CARTO"
+    }
+  },
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color": "#E8ECEF"
+      }
+    },
+    {
+      "id": "standard-tiles-layer",
+      "type": "raster",
+      "source": "standard-tiles",
+      "minzoom": 0,
+      "maxzoom": 22
+    }
+  ]
+}"""
+
+// ─────────────────────────────────────────────────────────────────────────────
 // Map composable
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -382,71 +423,116 @@ private fun CaptureMap(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
-    val lifecycle = LocalLifecycleOwner.current.lifecycle
+    val lifecycleOwner = LocalLifecycleOwner.current
 
-    // Defer MapView creation so the first compose frame renders instantly,
-    // avoiding the "Skipped N frames" cold-start penalty from MapLibre native init.
-    var mapView by remember { mutableStateOf<MapView?>(null) }
+    var mapInstance by remember { mutableStateOf<MapLibreMap?>(null) }
+    var isMapReady by remember { mutableStateOf(false) }
 
-    LaunchedEffect(Unit) {
-        val styleUrl = if (BuildConfig.MAPTILER_API_KEY.isNotBlank()) {
-            BuildConfig.MAPTILER_STYLE_URL
-        } else {
-            "https://demotiles.maplibre.org/style.json"
-        }
-
+    val mapView = remember {
         val options = MapLibreMapOptions.createFromAttributes(context)
             .textureMode(true)
-        val view = MapView(context, options).apply {
+        MapView(context, options).apply {
             onCreate(null)
-            onStart()
-            onResume()
-            getMapAsync { mapLibreMap ->
-                val initialLocation = state.currentLocation?.let { LatLng(it.latitude, it.longitude) }
-                    ?: LatLng(28.6315, 77.2167)
-
-                mapLibreMap.cameraPosition = CameraPosition.Builder()
-                    .target(initialLocation)
-                    .zoom(16.0)
-                    .build()
-
-                mapLibreMap.setStyle(Style.Builder().fromUri(styleUrl)) { style ->
-                    ensureHexLayers(style)
-                    if (state.nearbyHexGeoJson.isNotEmpty()) {
-                        style.getSourceAs<GeoJsonSource>(NEARBY_HEX_SOURCE_ID)?.setGeoJson(state.nearbyHexGeoJson)
-                    }
-                    if (state.capturedHexGeoJson.isNotEmpty()) {
-                        style.getSourceAs<GeoJsonSource>(HEX_SOURCE_ID)?.setGeoJson(state.capturedHexGeoJson)
-                    }
-                    if (state.currentHexGeoJson.isNotEmpty()) {
-                        style.getSourceAs<GeoJsonSource>(CURRENT_HEX_SOURCE_ID)?.setGeoJson(state.currentHexGeoJson)
-                    }
-                }
-
-                // Add Map Idle Listener for Backend Sync
-                mapLibreMap.addOnCameraIdleListener {
-                    val bounds = mapLibreMap.projection.visibleRegion.latLngBounds
-                    val zoom = mapLibreMap.cameraPosition.zoom
-                    screenModel.onMapIdle(
-                        minLat = bounds.southWest.latitude,
-                        minLng = bounds.southWest.longitude,
-                        maxLat = bounds.northEast.latitude,
-                        maxLng = bounds.northEast.longitude,
-                        zoom = zoom
-                    )
-                }
-            }
         }
-        mapView = view
     }
 
-    // Push pre-computed GeoJSON strings to map sources.
-    // These strings are already built off the UI thread in CaptureScreenModel.
-    val currentMapView = mapView
+    DisposableEffect(lifecycleOwner, mapView) {
+        val observer = LifecycleEventObserver { _, event ->
+            when (event) {
+                Lifecycle.Event.ON_START -> mapView.onStart()
+                Lifecycle.Event.ON_RESUME -> mapView.onResume()
+                Lifecycle.Event.ON_PAUSE -> mapView.onPause()
+                Lifecycle.Event.ON_STOP -> mapView.onStop()
+                Lifecycle.Event.ON_DESTROY -> mapView.onDestroy()
+                else -> Unit
+            }
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        if (lifecycleOwner.lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
+            mapView.onStart()
+        }
+        if (lifecycleOwner.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED)) {
+            mapView.onResume()
+        }
+        onDispose {
+            lifecycleOwner.lifecycle.removeObserver(observer)
+            mapView.onDestroy()
+        }
+    }
 
-    LaunchedEffect(state.nearbyHexGeoJson, currentMapView) {
-        currentMapView?.getMapAsync { map ->
-            map.getStyle { style ->
+    Box(modifier = modifier) {
+        AndroidView(
+            factory = {
+                mapView.apply {
+                    getMapAsync { mapLibreMap ->
+                        mapInstance = mapLibreMap
+
+                        val styleBuilder = if (BuildConfig.MAPTILER_API_KEY.isNotBlank() && BuildConfig.MAPTILER_STYLE_URL.isNotBlank()) {
+                            Style.Builder().fromUri(BuildConfig.MAPTILER_STYLE_URL)
+                        } else {
+                            Style.Builder().fromJson(STANDARD_MAP_STYLE_JSON)
+                        }
+
+                        mapLibreMap.setStyle(styleBuilder) { style ->
+                            ensureHexLayers(style)
+                            isMapReady = true
+
+                            if (state.nearbyHexGeoJson.isNotEmpty()) {
+                                style.getSourceAs<GeoJsonSource>(NEARBY_HEX_SOURCE_ID)?.setGeoJson(state.nearbyHexGeoJson)
+                            }
+                            if (state.capturedHexGeoJson.isNotEmpty()) {
+                                style.getSourceAs<GeoJsonSource>(HEX_SOURCE_ID)?.setGeoJson(state.capturedHexGeoJson)
+                            }
+                            if (state.currentHexGeoJson.isNotEmpty()) {
+                                style.getSourceAs<GeoJsonSource>(CURRENT_HEX_SOURCE_ID)?.setGeoJson(state.currentHexGeoJson)
+                            }
+                        }
+
+                        state.currentLocation?.let { loc ->
+                            mapLibreMap.cameraPosition = CameraPosition.Builder()
+                                .target(LatLng(loc.latitude, loc.longitude))
+                                .zoom(16.0)
+                                .build()
+                        }
+
+                        mapLibreMap.addOnCameraIdleListener {
+                            val bounds = mapLibreMap.projection.visibleRegion.latLngBounds
+                            val zoom = mapLibreMap.cameraPosition.zoom
+                            screenModel.onMapIdle(
+                                minLat = bounds.southWest.latitude,
+                                minLng = bounds.southWest.longitude,
+                                maxLat = bounds.northEast.latitude,
+                                maxLng = bounds.northEast.longitude,
+                                zoom = zoom
+                            )
+                        }
+                    }
+                }
+            },
+            modifier = Modifier.fillMaxSize()
+        )
+
+        // Center / track camera when real location arrives
+        var initialCameraSet by remember { mutableStateOf(false) }
+        LaunchedEffect(state.currentLocation, mapInstance) {
+            val map = mapInstance ?: return@LaunchedEffect
+            val loc = state.currentLocation ?: return@LaunchedEffect
+            val target = LatLng(loc.latitude, loc.longitude)
+            if (!initialCameraSet) {
+                map.cameraPosition = CameraPosition.Builder()
+                    .target(target)
+                    .zoom(16.0)
+                    .build()
+                initialCameraSet = true
+            } else if (state.isTracking) {
+                map.animateCamera(CameraUpdateFactory.newLatLng(target), 400)
+            }
+        }
+
+        // Push pre-computed GeoJSON strings to map sources when ready
+        LaunchedEffect(state.nearbyHexGeoJson, isMapReady) {
+            if (!isMapReady) return@LaunchedEffect
+            mapInstance?.getStyle { style ->
                 ensureHexLayers(style)
                 if (state.nearbyHexGeoJson.isNotEmpty()) {
                     style.getSourceAs<GeoJsonSource>(NEARBY_HEX_SOURCE_ID)
@@ -454,11 +540,10 @@ private fun CaptureMap(
                 }
             }
         }
-    }
 
-    LaunchedEffect(state.capturedHexGeoJson, currentMapView) {
-        currentMapView?.getMapAsync { map ->
-            map.getStyle { style ->
+        LaunchedEffect(state.capturedHexGeoJson, isMapReady) {
+            if (!isMapReady) return@LaunchedEffect
+            mapInstance?.getStyle { style ->
                 ensureHexLayers(style)
                 if (state.capturedHexGeoJson.isNotEmpty()) {
                     style.getSourceAs<GeoJsonSource>(HEX_SOURCE_ID)
@@ -466,74 +551,14 @@ private fun CaptureMap(
                 }
             }
         }
-    }
 
-    LaunchedEffect(state.currentHexGeoJson, currentMapView) {
-        currentMapView?.getMapAsync { map ->
-            map.getStyle { style ->
+        LaunchedEffect(state.currentHexGeoJson, isMapReady) {
+            if (!isMapReady) return@LaunchedEffect
+            mapInstance?.getStyle { style ->
                 ensureHexLayers(style)
                 if (state.currentHexGeoJson.isNotEmpty()) {
                     style.getSourceAs<GeoJsonSource>(CURRENT_HEX_SOURCE_ID)
                         ?.setGeoJson(state.currentHexGeoJson)
-                }
-            }
-        }
-    }
-
-    LaunchedEffect(state.currentLocation, currentMapView) {
-        state.currentLocation?.let { loc ->
-            currentMapView?.getMapAsync { map ->
-                val position = CameraPosition.Builder()
-                    .target(LatLng(loc.latitude, loc.longitude))
-                    .zoom(16.0)
-                    .build()
-                map.easeCamera(CameraUpdateFactory.newCameraPosition(position), 300)
-            }
-        }
-    }
-
-    if (currentMapView != null) {
-        DisposableEffect(lifecycle, currentMapView) {
-            val observer = LifecycleEventObserver { _, event ->
-                when (event) {
-                    Lifecycle.Event.ON_START -> currentMapView.onStart()
-                    Lifecycle.Event.ON_RESUME -> currentMapView.onResume()
-                    Lifecycle.Event.ON_PAUSE -> currentMapView.onPause()
-                    Lifecycle.Event.ON_STOP -> currentMapView.onStop()
-                    else -> Unit
-                }
-            }
-            lifecycle.addObserver(observer)
-            onDispose {
-                lifecycle.removeObserver(observer)
-                currentMapView.onDestroy()
-            }
-        }
-    }
-
-    Box(modifier = modifier) {
-        if (currentMapView != null) {
-            AndroidView(
-                factory = { currentMapView },
-                modifier = Modifier.fillMaxSize(),
-                update = { }
-            )
-        } else {
-            // Loading state while MapView initializes off the first frame
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(MaterialTheme.colorScheme.background),
-                contentAlignment = Alignment.Center
-            ) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    CircularProgressIndicator(modifier = Modifier.size(40.dp))
-                    Spacer(modifier = Modifier.height(12.dp))
-                    Text(
-                        text = "Loading map…",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f)
-                    )
                 }
             }
         }

@@ -5,33 +5,23 @@ import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
-import com.example.mobileapp.core.dev.DevStepSimulator
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlin.math.max
 
 class StepSensorManager(
-    context: Context,
-    private val useDevSimulator: Boolean = false
+    context: Context
 ) {
     private val sensorManager = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
-    private val devSimulator = DevStepSimulator()
 
-    fun observeStepDeltas(): Flow<Int> {
-        // TODO(TESTING): When useDevSimulator is true, hardware step sensor is not needed.
-        //  Step rate is configured in DevStepSimulator (default: 2 steps/sec).
-        if (useDevSimulator) {
-            return devSimulator.simulateSteps()
-        }
+    fun observeStepDeltas(): Flow<Int> = callbackFlow {
+        val counterSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
+        val detectorSensor = if (counterSensor == null) {
+            sensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR)
+        } else null
 
-        return callbackFlow {
-            val stepSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
-            if (stepSensor == null) {
-                close(IllegalStateException("TYPE_STEP_COUNTER sensor not available"))
-                return@callbackFlow
-            }
-
+        if (counterSensor != null) {
             var lastAbsoluteValue: Float? = null
             val listener = object : SensorEventListener {
                 override fun onSensorChanged(event: SensorEvent) {
@@ -49,8 +39,25 @@ class StepSensorManager(
                 override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) = Unit
             }
 
-            sensorManager.registerListener(listener, stepSensor, SensorManager.SENSOR_DELAY_NORMAL)
+            sensorManager.registerListener(listener, counterSensor, SensorManager.SENSOR_DELAY_NORMAL)
             awaitClose { sensorManager.unregisterListener(listener) }
+        } else if (detectorSensor != null) {
+            val listener = object : SensorEventListener {
+                override fun onSensorChanged(event: SensorEvent) {
+                    val value = event.values.firstOrNull() ?: return
+                    if (value > 0f) {
+                        trySend(value.toInt().coerceAtLeast(1))
+                    }
+                }
+
+                override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) = Unit
+            }
+
+            sensorManager.registerListener(listener, detectorSensor, SensorManager.SENSOR_DELAY_NORMAL)
+            awaitClose { sensorManager.unregisterListener(listener) }
+        } else {
+            // Hardware step sensor not present; keep flow open without emitting fake steps
+            awaitClose { }
         }
     }
 }

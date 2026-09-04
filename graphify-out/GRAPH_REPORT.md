@@ -1,29 +1,29 @@
 # Graph Report - fitquest  (2026-09-04)
 
 ## Corpus Check
-- 103 files · ~27,409 words
+- 104 files · ~28,057 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 673 nodes · 1128 edges · 44 communities (40 shown, 4 thin omitted)
+- 686 nodes · 1138 edges · 45 communities (40 shown, 5 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 19 edges (avg confidence: 0.53)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `7ab98158`
+- Built from commit: `83ec6872`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - quests/router.py
 - map/router.py
-- GeoPoint
-- seed.py
 - AppModule.kt
+- seed.py
+- CaptureScreenModel.kt
 - users/router.py
-- HexRepository
+- CapturedHexEntity
 - OnboardingScreen.kt
-- StepSensorManager.kt
+- LocationTrackingManager.kt
 - UserProfileEntity
 - AchievementEntity
 - HomeTab.kt
@@ -48,10 +48,11 @@
 - ProgressionLogicTest
 - FitQuest Hex Capture Prototype
 - Decisions
-- HexGeoJsonMapper
+- ADR 0002: Standard Raster Map Architecture and Real Hardware Sensor Pipeline
 - FitQuest Agent Execution Ledger
 - ADR 0001: MapLibre Rendering Lifecycle & Tile Fallback Architecture
 - 📡 API Contracts (Mobile App DTOs)
+- DevStepSimulator.kt
 
 ## God Nodes (most connected - your core abstractions)
 1. `UserProfileEntity` - 24 edges
@@ -80,7 +81,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (44 total, 4 thin omitted)
+## Communities (45 total, 5 thin omitted)
 
 ### Community 0 - "quests/router.py"
 Cohesion: 0.11
@@ -90,44 +91,44 @@ Nodes (42): SQLModel, Quest, The global definition of a challenge. Created by th
 Cohesion: 0.11
 Nodes (40): HexOwnership, SQLModel, The 'King of the Hill' table. Represents the CURRENT owner of a specific H3…, create_hex_endpoint(), get_hex_endpoint(), get_user_hexes_endpoint(), get, MapViewportResponse (+32 more)
 
-### Community 2 - "GeoPoint"
-Cohesion: 0.07
-Nodes (20): HexCaptureEngine, HexCaptureSnapshot, Job, DevLocationSimulator, Flow, Location, HexIndexer, HexIndexer (+12 more)
+### Community 2 - "AppModule.kt"
+Cohesion: 0.06
+Nodes (20): Application, HexCaptureEngine, HexCaptureSnapshot, Job, HexRepository, Flow, RoomHexRepository, DevLocationSimulator (+12 more)
 
 ### Community 3 - "seed.py"
 Cohesion: 0.06
-Nodes (32): Any, get_current_user(), get_db(), Session, Dev stub — returns a fixed user. Replace with real auth in production., Settings, create_db_and_tables(), get_session() (+24 more)
+Nodes (35): Any, get_current_user(), get_db(), Session, Dev stub — returns a fixed user. Replace with real auth in production., Settings, create_db_and_tables(), get_session() (+27 more)
 
-### Community 4 - "AppModule.kt"
-Cohesion: 0.08
-Nodes (24): Application, FitQuestApi, MapViewportResponse, RunSyncPayload, RunSyncSummary, HeatmapResponse, HexDetailResponse, MapViewportResponse (+16 more)
+### Community 4 - "CaptureScreenModel.kt"
+Cohesion: 0.07
+Nodes (25): HexGeoJsonMapper, HexIndexer, FitQuestApi, MapViewportResponse, RunSyncPayload, RunSyncSummary, HeatmapResponse, HexDetailResponse (+17 more)
 
 ### Community 5 - "users/router.py"
-Cohesion: 0.13
-Nodes (32): Friendship, SQLModel, Tracks friend requests and accepted friends. Composite primary key prevents…, Core User model with Profile stats, Streak logic, and Relationships., User, create_user_endpoint(), get_user_endpoint(), get_users_endpoint() (+24 more)
+Cohesion: 0.16
+Nodes (29): Core User model with Profile stats, Streak logic, and Relationships., User, create_user_endpoint(), get_user_endpoint(), get_users_endpoint(), get, patch, post (+21 more)
 
-### Community 6 - "HexRepository"
-Cohesion: 0.19
-Nodes (6): CapturedHexEntity, HexDao, Flow, HexRepository, Flow, RoomHexRepository
+### Community 6 - "CapturedHexEntity"
+Cohesion: 0.20
+Nodes (5): CapturedHexEntity, FitQuestDatabase, HexDao, Flow, RoomDatabase
 
 ### Community 7 - "OnboardingScreen.kt"
-Cohesion: 0.09
-Nodes (21): PermissionManager, MainActivity, Screen, LoginScreen, Screen, OnboardingScreen, PermissionCard(), StepConcept() (+13 more)
+Cohesion: 0.11
+Nodes (19): MainActivity, Screen, LoginScreen, Screen, OnboardingScreen, PermissionCard(), StepConcept(), StepConquest() (+11 more)
 
-### Community 8 - "StepSensorManager.kt"
-Cohesion: 0.24
-Nodes (7): DevStepSimulator, Flow, Flow, StepSensorManager, SensorEventListener, Sensor, SensorEvent
+### Community 8 - "LocationTrackingManager.kt"
+Cohesion: 0.12
+Nodes (14): PermissionManager, Flow, Location, LocationTrackingManager, LocationCallback, Flow, StepSensorManager, SensorEventListener (+6 more)
 
 ### Community 9 - "UserProfileEntity"
 Cohesion: 0.07
 Nodes (24): Flow, UserDao, UserProfileEntity, Flow, RoomUserProfileRepository, UserProfileRepository, Contender, ContenderRow() (+16 more)
 
 ### Community 10 - "AchievementEntity"
-Cohesion: 0.08
-Nodes (15): AchievementDao, Flow, AchievementEntity, AchievementRepository, Flow, RoomAchievementRepository, FitQuestDatabase, AchievementCard() (+7 more)
+Cohesion: 0.10
+Nodes (13): AchievementDao, Flow, AchievementEntity, AchievementRepository, Flow, RoomAchievementRepository, AchievementCard(), AchievementsTab (+5 more)
 
 ### Community 11 - "HomeTab.kt"
-Cohesion: 0.11
+Cohesion: 0.10
 Nodes (16): DailyQuestDao, Flow, DailyQuestEntity, Flow, QuestRepository, RoomQuestRepository, DailyProgressCard(), DailyQuestsCard() (+8 more)
 
 ### Community 12 - "gradlew"
@@ -135,7 +136,7 @@ Cohesion: 0.60
 Nodes (3): gradlew script, die(), warn()
 
 ### Community 23 - "RunSessionEntity"
-Cohesion: 0.13
+Cohesion: 0.14
 Nodes (6): Flow, RunSessionDao, RunSessionEntity, Flow, RoomRunSessionRepository, RunSessionRepository
 
 ### Community 24 - "CRITICAL PROTOCOL: WORKSPACE STATE GUARDRAILS & CACHE BOUNDARY RETENTION"
@@ -198,13 +199,13 @@ Nodes (4): FitQuest Hex Capture Prototype, Main files, Quick try, TODO
 Cohesion: 0.22
 Nodes (8): 1. Local-First Room Persistence Expansion, 2. Onboarding & Dynamic App Initialization, 3. Active Run Experience & Post-Run Summary Modal, 4. Navigation Architecture & Tabs, ADR 0001: Offline-First Standalone Mobile Frontend Architecture, Consequences & Follow-ups, Context & Problem Statement, Decisions
 
-### Community 40 - "HexGeoJsonMapper"
-Cohesion: 0.53
-Nodes (3): HexGeoJsonMapper, HexIndexer, FeatureCollection
+### Community 40 - "ADR 0002: Standard Raster Map Architecture and Real Hardware Sensor Pipeline"
+Cohesion: 0.40
+Nodes (4): ADR 0002: Standard Raster Map Architecture and Real Hardware Sensor Pipeline, Consequences & Validation, Context, Decision
 
 ### Community 41 - "FitQuest Agent Execution Ledger"
-Cohesion: 0.40
-Nodes (4): [2026-09-04 12:10] - Task: Initial Project Grounding, Context Scaffolding & Similar App References, [2026-09-04 14:00] - Task: Implement Complete Offline Mobile Frontend Experience, [2026-09-04 14:35] - Task: Diagnose and Fix Map Visibility in Recon/Run Screen, FitQuest Agent Execution Ledger
+Cohesion: 0.33
+Nodes (5): [2026-09-04 12:10] - Task: Initial Project Grounding, Context Scaffolding & Similar App References, [2026-09-04 14:00] - Task: Implement Complete Offline Mobile Frontend Experience, [2026-09-04 14:35] - Task: Diagnose and Fix Map Visibility in Recon/Run Screen, [2026-09-04 15:00] - Task: Migrate to Standard Map View and Pure Hardware Sensors, FitQuest Agent Execution Ledger
 
 ### Community 42 - "ADR 0001: MapLibre Rendering Lifecycle & Tile Fallback Architecture"
 Cohesion: 0.40
@@ -215,24 +216,24 @@ Cohesion: 0.50
 Nodes (4): 📡 API Contracts (Mobile App DTOs), Map Viewports (Zoom-Aware), Runs Payload (The Sync Engine), Users (Flattened)
 
 ## Knowledge Gaps
-- **113 isolated node(s):** `HexDetailResponse`, `HeatmapResponse`, `Codebase Metadata`, `Backend SQLModel Entities`, `Mobile Persistence Schema (Room)` (+108 more)
+- **117 isolated node(s):** `HexDetailResponse`, `HeatmapResponse`, `Codebase Metadata`, `Backend SQLModel Entities`, `Mobile Persistence Schema (Room)` (+112 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **4 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `UserProfileRepository` connect `UserProfileEntity` to `HomeTab.kt`, `AppModule.kt`, `OnboardingScreen.kt`?**
+- **Why does `UserProfileRepository` connect `UserProfileEntity` to `HomeTab.kt`, `CaptureScreenModel.kt`, `OnboardingScreen.kt`?**
   _High betweenness centrality (0.025) - this node is a cross-community bridge._
 - **Why does `UserProfileEntity` connect `UserProfileEntity` to `HomeTab.kt`, `OnboardingScreen.kt`?**
   _High betweenness centrality (0.024) - this node is a cross-community bridge._
-- **Why does `HexRepository` connect `HexRepository` to `UserProfileEntity`, `GeoPoint`, `HomeTab.kt`, `AppModule.kt`?**
-  _High betweenness centrality (0.023) - this node is a cross-community bridge._
+- **Why does `HexRepository` connect `AppModule.kt` to `UserProfileEntity`, `HomeTab.kt`, `CaptureScreenModel.kt`?**
+  _High betweenness centrality (0.022) - this node is a cross-community bridge._
 - **What connects `HexDetailResponse`, `HeatmapResponse`, `Codebase Metadata` to the rest of the system?**
-  _113 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _117 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `quests/router.py` be split into smaller, more focused modules?**
   _Cohesion score 0.11207729468599034 - nodes in this community are weakly interconnected._
 - **Should `map/router.py` be split into smaller, more focused modules?**
   _Cohesion score 0.10887949260042283 - nodes in this community are weakly interconnected._
-- **Should `GeoPoint` be split into smaller, more focused modules?**
-  _Cohesion score 0.06765327695560254 - nodes in this community are weakly interconnected._
+- **Should `AppModule.kt` be split into smaller, more focused modules?**
+  _Cohesion score 0.05647058823529412 - nodes in this community are weakly interconnected._

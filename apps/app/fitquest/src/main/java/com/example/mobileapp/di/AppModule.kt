@@ -45,15 +45,6 @@ val appModule = module {
     }
 
 
-    // ── Dev/Testing Toggles ──────────────────────────────────────────────────
-    // TODO(TESTING): Set these to `true` to simulate walk & steps without real sensors.
-    //  - useDevLocation = true  → mock GPS walk path (see DevLocationSimulator.DEFAULT_WALK_PATH)
-    //  - useDevSteps    = true  → synthetic 2-steps-per-second stream
-    //  Set BOTH to `false` for real device testing with actual GPS + step counter.
-    val useDevLocation = true
-    val useDevSteps = true
-    // ─────────────────────────────────────────────────────────────────────────
-
     single {
         Room.databaseBuilder(
             get(),
@@ -85,8 +76,8 @@ val appModule = module {
 
     single<HexIndexer> { UberH3HexIndexer() }
 
-    single { StepSensorManager(get(), useDevSimulator = useDevSteps) }
-    single { LocationTrackingManager(get(), useDevSimulator = useDevLocation) }
+    single { StepSensorManager(get()) }
+    single { LocationTrackingManager(get()) }
 
     single { HexCaptureEngine(get(), get(), get(), get()) }
 

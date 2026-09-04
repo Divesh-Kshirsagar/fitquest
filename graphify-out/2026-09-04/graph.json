@@ -384,7 +384,7 @@
       "label": "HexCaptureEngine",
       "file_type": "code",
       "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/capture/HexCaptureEngine.kt",
-      "source_location": "L27",
+      "source_location": "L29",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
@@ -397,7 +397,7 @@
       "label": "HexCaptureSnapshot",
       "file_type": "code",
       "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/capture/HexCaptureEngine.kt",
-      "source_location": "L18",
+      "source_location": "L20",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
@@ -641,17 +641,17 @@
       "norm_label": "progressionlogictest"
     },
     {
-      "label": "HexGeoJsonMapper",
+      "label": "FitQuestApi",
       "file_type": "code",
-      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/geo/HexGeoJsonMapper.kt",
-      "source_location": "L8",
+      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/network/FitQuestApi.kt",
+      "source_location": "L11",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_geo_hexgeojsonmapper_hexgeojsonmapper",
+      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_network_fitquestapi_fitquestapi",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
-      "norm_label": "hexgeojsonmapper"
+      "community_name": "AppModule.kt",
+      "norm_label": "fitquestapi"
     },
     {
       "label": "HeatmapResponse",
@@ -663,7 +663,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_network_models_fitquestmodels_heatmapresponse",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": "heatmapresponse"
     },
     {
@@ -676,7 +676,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_network_models_fitquestmodels_hexdetailresponse",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": "hexdetailresponse"
     },
     {
@@ -689,7 +689,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_network_models_fitquestmodels_mapviewportresponse",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": "mapviewportresponse"
     },
     {
@@ -702,7 +702,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_network_models_fitquestmodels_runsyncpayload",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": "runsyncpayload"
     },
     {
@@ -715,7 +715,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_network_models_fitquestmodels_runsyncsummary",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": "runsyncsummary"
     },
     {
@@ -728,7 +728,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_features_capture_capturescreenmodel_capturescreenmodel",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": "capturescreenmodel"
     },
     {
@@ -741,8 +741,21 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_features_capture_capturestate_capturestate",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": "capturestate"
+    },
+    {
+      "label": "FitQuestApp",
+      "file_type": "code",
+      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/FitQuestApp.kt",
+      "source_location": "L10",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_fitquestapp_fitquestapp",
+      "community": 4,
+      "community_name": "AppModule.kt",
+      "norm_label": "fitquestapp"
     },
     {
       "label": "CurrentRunScreen",
@@ -754,8 +767,21 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_ui_capture_currentrunscreen_currentrunscreen",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": "currentrunscreen"
+    },
+    {
+      "label": "HexGeoJsonMapper",
+      "file_type": "code",
+      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/geo/HexGeoJsonMapper.kt",
+      "source_location": "L8",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_geo_hexgeojsonmapper_hexgeojsonmapper",
+      "community": 40,
+      "community_name": "HexGeoJsonMapper",
+      "norm_label": "hexgeojsonmapper"
     },
     {
       "label": "Friendship",
@@ -858,7 +884,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_data_local_capturedhexentity_capturedhexentity",
       "community": 6,
-      "community_name": "AppModule.kt",
+      "community_name": "HexRepository",
       "norm_label": "capturedhexentity"
     },
     {
@@ -871,7 +897,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_data_local_hexdao_hexdao",
       "community": 6,
-      "community_name": "AppModule.kt",
+      "community_name": "HexRepository",
       "norm_label": "hexdao"
     },
     {
@@ -884,7 +910,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_data_local_hexrepository_hexrepository",
       "community": 6,
-      "community_name": "AppModule.kt",
+      "community_name": "HexRepository",
       "norm_label": "hexrepository"
     },
     {
@@ -897,34 +923,8 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_data_local_hexrepository_roomhexrepository",
       "community": 6,
-      "community_name": "AppModule.kt",
+      "community_name": "HexRepository",
       "norm_label": "roomhexrepository"
-    },
-    {
-      "label": "FitQuestApi",
-      "file_type": "code",
-      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/network/FitQuestApi.kt",
-      "source_location": "L11",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_network_fitquestapi_fitquestapi",
-      "community": 6,
-      "community_name": "AppModule.kt",
-      "norm_label": "fitquestapi"
-    },
-    {
-      "label": "FitQuestApp",
-      "file_type": "code",
-      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/FitQuestApp.kt",
-      "source_location": "L10",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_fitquestapp_fitquestapp",
-      "community": 6,
-      "community_name": "AppModule.kt",
-      "norm_label": "fitquestapp"
     },
     {
       "label": "PermissionManager",
@@ -1556,6 +1556,18 @@
       "norm_label": ".achievementdao()"
     },
     {
+      "label": ".dailyQuestDao()",
+      "file_type": "code",
+      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/data/local/FitQuestDatabase.kt",
+      "source_location": "L21",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_data_local_fitquestdatabase_fitquestdatabase_dailyquestdao",
+      "community": 10,
+      "community_name": "AchievementEntity",
+      "norm_label": ".dailyquestdao()"
+    },
+    {
       "label": ".hexDao()",
       "file_type": "code",
       "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/data/local/FitQuestDatabase.kt",
@@ -1566,18 +1578,6 @@
       "community": 10,
       "community_name": "AchievementEntity",
       "norm_label": ".hexdao()"
-    },
-    {
-      "label": ".runSessionDao()",
-      "file_type": "code",
-      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/data/local/FitQuestDatabase.kt",
-      "source_location": "L20",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_data_local_fitquestdatabase_fitquestdatabase_runsessiondao",
-      "community": 10,
-      "community_name": "AchievementEntity",
-      "norm_label": ".runsessiondao()"
     },
     {
       "label": "AchievementCard()",
@@ -1662,18 +1662,6 @@
       "community": 11,
       "community_name": "HomeTab.kt",
       "norm_label": ".updateprogress()"
-    },
-    {
-      "label": ".dailyQuestDao()",
-      "file_type": "code",
-      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/data/local/FitQuestDatabase.kt",
-      "source_location": "L21",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_data_local_fitquestdatabase_fitquestdatabase_dailyquestdao",
-      "community": 11,
-      "community_name": "HomeTab.kt",
-      "norm_label": ".dailyquestdao()"
     },
     {
       "label": ".ensureTodayQuests()",
@@ -1907,7 +1895,7 @@
       "label": ".startTracking()",
       "file_type": "code",
       "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/capture/HexCaptureEngine.kt",
-      "source_location": "L48",
+      "source_location": "L66",
       "_callable": true,
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_capture_hexcaptureengine_hexcaptureengine_starttracking",
@@ -1919,7 +1907,7 @@
       "label": ".stopTracking()",
       "file_type": "code",
       "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/capture/HexCaptureEngine.kt",
-      "source_location": "L92",
+      "source_location": "L110",
       "_callable": true,
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_capture_hexcaptureengine_hexcaptureengine_stoptracking",
@@ -2106,6 +2094,18 @@
       "community": 2,
       "community_name": "GeoPoint",
       "norm_label": ".latlngtohexid()"
+    },
+    {
+      "label": ".runSessionDao()",
+      "file_type": "code",
+      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/data/local/FitQuestDatabase.kt",
+      "source_location": "L20",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_data_local_fitquestdatabase_fitquestdatabase_runsessiondao",
+      "community": 23,
+      "community_name": "RunSessionEntity",
+      "norm_label": ".runsessiondao()"
     },
     {
       "label": ".insertSession()",
@@ -2468,28 +2468,28 @@
       "norm_label": ".`step stride distance and active calories calculation`()"
     },
     {
-      "label": ".toFeatureCollection()",
+      "label": ".getMapViewport()",
       "file_type": "code",
-      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/geo/HexGeoJsonMapper.kt",
-      "source_location": "L9",
+      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/network/FitQuestApi.kt",
+      "source_location": "L18",
       "_callable": true,
       "_origin": "ast",
-      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_geo_hexgeojsonmapper_hexgeojsonmapper_tofeaturecollection",
+      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_network_fitquestapi_fitquestapi_getmapviewport",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
-      "norm_label": ".tofeaturecollection()"
+      "community_name": "AppModule.kt",
+      "norm_label": ".getmapviewport()"
     },
     {
-      "label": ".toGeoJsonString()",
+      "label": ".syncRunSession()",
       "file_type": "code",
-      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/geo/HexGeoJsonMapper.kt",
-      "source_location": "L31",
+      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/network/FitQuestApi.kt",
+      "source_location": "L13",
       "_callable": true,
       "_origin": "ast",
-      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_geo_hexgeojsonmapper_hexgeojsonmapper_togeojsonstring",
+      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_network_fitquestapi_fitquestapi_syncrunsession",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
-      "norm_label": ".togeojsonstring()"
+      "community_name": "AppModule.kt",
+      "norm_label": ".syncrunsession()"
     },
     {
       "label": ".dismissSummaryDialog()",
@@ -2500,7 +2500,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_features_capture_capturescreenmodel_capturescreenmodel_dismisssummarydialog",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": ".dismisssummarydialog()"
     },
     {
@@ -2512,7 +2512,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_features_capture_capturescreenmodel_capturescreenmodel_ondispose",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": ".ondispose()"
     },
     {
@@ -2524,7 +2524,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_features_capture_capturescreenmodel_capturescreenmodel_onmapidle",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": ".onmapidle()"
     },
     {
@@ -2536,7 +2536,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_features_capture_capturescreenmodel_capturescreenmodel_ontogglepause",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": ".ontogglepause()"
     },
     {
@@ -2548,7 +2548,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_features_capture_capturescreenmodel_capturescreenmodel_ontoggletracking",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": ".ontoggletracking()"
     },
     {
@@ -2560,8 +2560,20 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_features_capture_capturescreenmodel_capturescreenmodel_starttimer",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": ".starttimer()"
+    },
+    {
+      "label": ".onCreate()",
+      "file_type": "code",
+      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/FitQuestApp.kt",
+      "source_location": "L11",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_fitquestapp_fitquestapp_oncreate",
+      "community": 4,
+      "community_name": "AppModule.kt",
+      "norm_label": ".oncreate()"
     },
     {
       "label": "CaptureMap()",
@@ -2572,7 +2584,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_ui_capture_currentrunscreen_capturemap",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": "capturemap()"
     },
     {
@@ -2584,19 +2596,19 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_ui_capture_currentrunscreen_currentrunscreen_content",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": ".content()"
     },
     {
       "label": "ensureHexLayers()",
       "file_type": "code",
       "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/ui/capture/CurrentRunScreen.kt",
-      "source_location": "L544",
+      "source_location": "L555",
       "_callable": true,
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_ui_capture_currentrunscreen_ensurehexlayers",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": "ensurehexlayers()"
     },
     {
@@ -2608,7 +2620,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_ui_capture_currentrunscreen_formatduration",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": "formatduration()"
     },
     {
@@ -2620,8 +2632,32 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_ui_capture_currentrunscreen_permissiongatescreen",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": "permissiongatescreen()"
+    },
+    {
+      "label": ".toFeatureCollection()",
+      "file_type": "code",
+      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/geo/HexGeoJsonMapper.kt",
+      "source_location": "L9",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_geo_hexgeojsonmapper_hexgeojsonmapper_tofeaturecollection",
+      "community": 40,
+      "community_name": "HexGeoJsonMapper",
+      "norm_label": ".tofeaturecollection()"
+    },
+    {
+      "label": ".toGeoJsonString()",
+      "file_type": "code",
+      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/geo/HexGeoJsonMapper.kt",
+      "source_location": "L31",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_geo_hexgeojsonmapper_hexgeojsonmapper_togeojsonstring",
+      "community": 40,
+      "community_name": "HexGeoJsonMapper",
+      "norm_label": ".togeojsonstring()"
     },
     {
       "label": "create_user_endpoint()",
@@ -2740,7 +2776,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_data_local_hexdao_hexdao_addsteps",
       "community": 6,
-      "community_name": "AppModule.kt",
+      "community_name": "HexRepository",
       "norm_label": ".addsteps()"
     },
     {
@@ -2752,7 +2788,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_data_local_hexdao_hexdao_getbyhexid",
       "community": 6,
-      "community_name": "AppModule.kt",
+      "community_name": "HexRepository",
       "norm_label": ".getbyhexid()"
     },
     {
@@ -2764,7 +2800,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_data_local_hexdao_hexdao_observeallcapturedhexes",
       "community": 6,
-      "community_name": "AppModule.kt",
+      "community_name": "HexRepository",
       "norm_label": ".observeallcapturedhexes()"
     },
     {
@@ -2776,7 +2812,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_data_local_hexdao_hexdao_upsert",
       "community": 6,
-      "community_name": "AppModule.kt",
+      "community_name": "HexRepository",
       "norm_label": ".upsert()"
     },
     {
@@ -2788,7 +2824,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_data_local_hexrepository_hexrepository_mergesessionhexes",
       "community": 6,
-      "community_name": "AppModule.kt",
+      "community_name": "HexRepository",
       "norm_label": ".mergesessionhexes()"
     },
     {
@@ -2800,7 +2836,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_data_local_hexrepository_hexrepository_observecapturedhexes",
       "community": 6,
-      "community_name": "AppModule.kt",
+      "community_name": "HexRepository",
       "norm_label": ".observecapturedhexes()"
     },
     {
@@ -2812,7 +2848,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_data_local_hexrepository_roomhexrepository_mergesessionhexes",
       "community": 6,
-      "community_name": "AppModule.kt",
+      "community_name": "HexRepository",
       "norm_label": ".mergesessionhexes()"
     },
     {
@@ -2824,44 +2860,8 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_data_local_hexrepository_roomhexrepository_observecapturedhexes",
       "community": 6,
-      "community_name": "AppModule.kt",
+      "community_name": "HexRepository",
       "norm_label": ".observecapturedhexes()"
-    },
-    {
-      "label": ".getMapViewport()",
-      "file_type": "code",
-      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/network/FitQuestApi.kt",
-      "source_location": "L18",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_network_fitquestapi_fitquestapi_getmapviewport",
-      "community": 6,
-      "community_name": "AppModule.kt",
-      "norm_label": ".getmapviewport()"
-    },
-    {
-      "label": ".syncRunSession()",
-      "file_type": "code",
-      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/network/FitQuestApi.kt",
-      "source_location": "L13",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_network_fitquestapi_fitquestapi_syncrunsession",
-      "community": 6,
-      "community_name": "AppModule.kt",
-      "norm_label": ".syncrunsession()"
-    },
-    {
-      "label": ".onCreate()",
-      "file_type": "code",
-      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/FitQuestApp.kt",
-      "source_location": "L11",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_fitquestapp_fitquestapp_oncreate",
-      "community": 6,
-      "community_name": "AppModule.kt",
-      "norm_label": ".oncreate()"
     },
     {
       "label": ".hasAllPermissions()",
@@ -4923,17 +4923,6 @@
       "norm_label": "4. quests module schema"
     },
     {
-      "label": "\ud83d\udce1 API Contracts (Mobile App DTOs)",
-      "file_type": "document",
-      "source_file": "docs/backend-schema.md",
-      "source_location": "L88",
-      "_origin": "ast",
-      "id": "docs_backend_schema_api_contracts_mobile_app_dtos",
-      "community": 25,
-      "community_name": "Backend Architecture & Schema (FastAPI + Supabase)",
-      "norm_label": "\ud83d\udce1 api contracts (mobile app dtos)"
-    },
-    {
       "label": "\ud83d\udd10 Authentication Ecosystem",
       "file_type": "document",
       "source_file": "docs/backend-schema.md",
@@ -4965,17 +4954,6 @@
       "community": 25,
       "community_name": "Backend Architecture & Schema (FastAPI + Supabase)",
       "norm_label": "\ud83d\uddc4 database schema (sqlmodel + postgres)"
-    },
-    {
-      "label": "Map Viewports (Zoom-Aware)",
-      "file_type": "document",
-      "source_file": "docs/backend-schema.md",
-      "source_location": "L115",
-      "_origin": "ast",
-      "id": "docs_backend_schema_map_viewports_zoom_aware",
-      "community": 25,
-      "community_name": "Backend Architecture & Schema (FastAPI + Supabase)",
-      "norm_label": "map viewports (zoom-aware)"
     },
     {
       "label": "\ud83c\udfd7 Modular Domain-Driven Architecture",
@@ -5011,28 +4989,6 @@
       "norm_label": "project structure"
     },
     {
-      "label": "Runs Payload (The Sync Engine)",
-      "file_type": "document",
-      "source_file": "docs/backend-schema.md",
-      "source_location": "L90",
-      "_origin": "ast",
-      "id": "docs_backend_schema_runs_payload_the_sync_engine",
-      "community": 25,
-      "community_name": "Backend Architecture & Schema (FastAPI + Supabase)",
-      "norm_label": "runs payload (the sync engine)"
-    },
-    {
-      "label": "Users (Flattened)",
-      "file_type": "document",
-      "source_file": "docs/backend-schema.md",
-      "source_location": "L120",
-      "_origin": "ast",
-      "id": "docs_backend_schema_users_flattened",
-      "community": 25,
-      "community_name": "Backend Architecture & Schema (FastAPI + Supabase)",
-      "norm_label": "users (flattened)"
-    },
-    {
       "label": ".agent-context.md",
       "file_type": "document",
       "source_file": ".agent-context.md",
@@ -5047,7 +5003,7 @@
       "label": "ACTIVE WORKING MEMORY BLOCK (DYNAMIC SUFFIX)",
       "file_type": "document",
       "source_file": ".agent-context.md",
-      "source_location": "L77",
+      "source_location": "L81",
       "_origin": "ast",
       "id": "agent_context_active_working_memory_block_dynamic_suffix",
       "community": 26,
@@ -5058,7 +5014,7 @@
       "label": "Active Working Objective",
       "file_type": "document",
       "source_file": ".agent-context.md",
-      "source_location": "L79",
+      "source_location": "L83",
       "_origin": "ast",
       "id": "agent_context_active_working_objective",
       "community": 26,
@@ -5091,7 +5047,7 @@
       "label": "Directory Topology",
       "file_type": "document",
       "source_file": ".agent-context.md",
-      "source_location": "L28",
+      "source_location": "L32",
       "_origin": "ast",
       "id": "agent_context_directory_topology",
       "community": 26,
@@ -5135,7 +5091,7 @@
       "label": "Network DTOs",
       "file_type": "document",
       "source_file": ".agent-context.md",
-      "source_location": "L24",
+      "source_location": "L28",
       "_origin": "ast",
       "id": "agent_context_network_dtos",
       "community": 26,
@@ -5146,7 +5102,7 @@
       "label": "Stable Architecture Requirements Log",
       "file_type": "document",
       "source_file": ".agent-context.md",
-      "source_location": "L69",
+      "source_location": "L73",
       "_origin": "ast",
       "id": "agent_context_stable_architecture_requirements_log",
       "community": 26,
@@ -5484,15 +5440,15 @@
       "norm_label": "voyager & screenmodel"
     },
     {
-      "label": "persistence.md",
+      "label": "capture-engine.md",
       "file_type": "document",
-      "source_file": "docs/persistence.md",
+      "source_file": "docs/capture-engine.md",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "docs_persistence",
+      "id": "docs_capture_engine",
       "community": 29,
       "community_name": "README.md",
-      "norm_label": "persistence.md"
+      "norm_label": "capture-engine.md"
     },
     {
       "label": "README.md",
@@ -5867,17 +5823,6 @@
       "community": 3,
       "community_name": "seed.py",
       "norm_label": "the exact payload the android app sends when a run finishes. matches the..."
-    },
-    {
-      "label": "capture-engine.md",
-      "file_type": "document",
-      "source_file": "docs/capture-engine.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "docs_capture_engine",
-      "community": 30,
-      "community_name": "Hex Capture Engine",
-      "norm_label": "capture-engine.md"
     },
     {
       "label": "Capture Mechanics",
@@ -6342,15 +6287,15 @@
       "norm_label": "5. leaderboard & district rankings (`leaderboardtab.kt`)"
     },
     {
-      "label": "6. Profile, Achievements & Settings (`ProfileTab.kt`)",
+      "label": "6. Profile, Achievements & Settings (`ProfileTab.kt` & `AchievementsTab.kt`)",
       "file_type": "document",
       "source_file": "docs/todo.md",
       "source_location": "L33",
       "_origin": "ast",
-      "id": "docs_todo_6_profile_achievements_settings_profiletab_kt",
+      "id": "docs_todo_6_profile_achievements_settings_profiletab_kt_achievementstab_kt",
       "community": 34,
       "community_name": "Implementation Plan: Offline Frontend Sprint",
-      "norm_label": "6. profile, achievements & settings (`profiletab.kt`)"
+      "norm_label": "6. profile, achievements & settings (`profiletab.kt` & `achievementstab.kt`)"
     },
     {
       "label": "7. Verification & Testing",
@@ -6386,6 +6331,17 @@
       "norm_label": "architecture"
     },
     {
+      "label": "Commercial & Community Precedents",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L110",
+      "_origin": "ast",
+      "id": "readme_commercial_community_precedents",
+      "community": 35,
+      "community_name": "FitQuest",
+      "norm_label": "commercial & community precedents"
+    },
+    {
       "label": "Documentation",
       "file_type": "document",
       "source_file": "README.md",
@@ -6395,6 +6351,17 @@
       "community": 35,
       "community_name": "FitQuest",
       "norm_label": "documentation"
+    },
+    {
+      "label": "Emulator & Testing Notes",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "readme_emulator_testing_notes",
+      "community": 35,
+      "community_name": "FitQuest",
+      "norm_label": "emulator & testing notes"
     },
     {
       "label": "FitQuest",
@@ -6419,6 +6386,17 @@
       "norm_label": "getting started"
     },
     {
+      "label": "Grid Ring Size",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L70",
+      "_origin": "ast",
+      "id": "readme_grid_ring_size",
+      "community": 35,
+      "community_name": "FitQuest",
+      "norm_label": "grid ring size"
+    },
+    {
       "label": "H3 Native Libraries",
       "file_type": "document",
       "source_file": "README.md",
@@ -6428,6 +6406,28 @@
       "community": 35,
       "community_name": "FitQuest",
       "norm_label": "h3 native libraries"
+    },
+    {
+      "label": "H3 Resolution",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L65",
+      "_origin": "ast",
+      "id": "readme_h3_resolution",
+      "community": 35,
+      "community_name": "FitQuest",
+      "norm_label": "h3 resolution"
+    },
+    {
+      "label": "High-Value Feature Roadmap (Derived from Precedents)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L126",
+      "_origin": "ast",
+      "id": "readme_high_value_feature_roadmap_derived_from_precedents",
+      "community": 35,
+      "community_name": "FitQuest",
+      "norm_label": "high-value feature roadmap (derived from precedents)"
     },
     {
       "label": "How It Works",
@@ -6452,6 +6452,28 @@
       "norm_label": "license"
     },
     {
+      "label": "Location on Emulator",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L59",
+      "_origin": "ast",
+      "id": "readme_location_on_emulator",
+      "community": 35,
+      "community_name": "FitQuest",
+      "norm_label": "location on emulator"
+    },
+    {
+      "label": "Open-Source Implementations & Geospatial Tooling",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L119",
+      "_origin": "ast",
+      "id": "readme_open_source_implementations_geospatial_tooling",
+      "community": 35,
+      "community_name": "FitQuest",
+      "norm_label": "open-source implementations & geospatial tooling"
+    },
+    {
       "label": "Prerequisites",
       "file_type": "document",
       "source_file": "README.md",
@@ -6472,6 +6494,39 @@
       "community": 35,
       "community_name": "FitQuest",
       "norm_label": "setup"
+    },
+    {
+      "label": "Similar Apps & References",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L106",
+      "_origin": "ast",
+      "id": "readme_similar_apps_references",
+      "community": 35,
+      "community_name": "FitQuest",
+      "norm_label": "similar apps & references"
+    },
+    {
+      "label": "Step Counter Sensor",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L44",
+      "_origin": "ast",
+      "id": "readme_step_counter_sensor",
+      "community": 35,
+      "community_name": "FitQuest",
+      "norm_label": "step counter sensor"
+    },
+    {
+      "label": "persistence.md",
+      "file_type": "document",
+      "source_file": "docs/persistence.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_persistence",
+      "community": 36,
+      "community_name": "Persistence",
+      "norm_label": "persistence.md"
     },
     {
       "label": "`CapturedHexEntity`",
@@ -6617,81 +6672,114 @@
       "norm_label": "todo"
     },
     {
-      "label": "Emulator & Testing Notes",
+      "label": "0001-offline-frontend-architecture.md",
       "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L42",
-      "_origin": "ast",
-      "id": "readme_emulator_testing_notes",
-      "community": 39,
-      "community_name": "Emulator & Testing Notes",
-      "norm_label": "emulator & testing notes"
-    },
-    {
-      "label": "Grid Ring Size",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L70",
-      "_origin": "ast",
-      "id": "readme_grid_ring_size",
-      "community": 39,
-      "community_name": "Emulator & Testing Notes",
-      "norm_label": "grid ring size"
-    },
-    {
-      "label": "H3 Resolution",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L65",
-      "_origin": "ast",
-      "id": "readme_h3_resolution",
-      "community": 39,
-      "community_name": "Emulator & Testing Notes",
-      "norm_label": "h3 resolution"
-    },
-    {
-      "label": "Location on Emulator",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L59",
-      "_origin": "ast",
-      "id": "readme_location_on_emulator",
-      "community": 39,
-      "community_name": "Emulator & Testing Notes",
-      "norm_label": "location on emulator"
-    },
-    {
-      "label": "Step Counter Sensor",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L44",
-      "_origin": "ast",
-      "id": "readme_step_counter_sensor",
-      "community": 39,
-      "community_name": "Emulator & Testing Notes",
-      "norm_label": "step counter sensor"
-    },
-    {
-      "label": "HexGeoJsonMapper.kt",
-      "file_type": "code",
-      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/geo/HexGeoJsonMapper.kt",
+      "source_file": "docs/docs/ui/0001-offline-frontend-architecture.md",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_geo_hexgeojsonmapper",
-      "community": 4,
-      "community_name": "CaptureScreenModel.kt",
-      "norm_label": "hexgeojsonmapper.kt"
+      "id": "docs_docs_ui_0001_offline_frontend_architecture",
+      "community": 39,
+      "community_name": "Decisions",
+      "norm_label": "0001-offline-frontend-architecture.md"
     },
     {
-      "label": "HexIndexer",
+      "label": "1. Local-First Room Persistence Expansion",
+      "file_type": "document",
+      "source_file": "docs/docs/ui/0001-offline-frontend-architecture.md",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "docs_docs_ui_0001_offline_frontend_architecture_1_local_first_room_persistence_expansion",
+      "community": 39,
+      "community_name": "Decisions",
+      "norm_label": "1. local-first room persistence expansion"
+    },
+    {
+      "label": "2. Onboarding & Dynamic App Initialization",
+      "file_type": "document",
+      "source_file": "docs/docs/ui/0001-offline-frontend-architecture.md",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "docs_docs_ui_0001_offline_frontend_architecture_2_onboarding_dynamic_app_initialization",
+      "community": 39,
+      "community_name": "Decisions",
+      "norm_label": "2. onboarding & dynamic app initialization"
+    },
+    {
+      "label": "3. Active Run Experience & Post-Run Summary Modal",
+      "file_type": "document",
+      "source_file": "docs/docs/ui/0001-offline-frontend-architecture.md",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "docs_docs_ui_0001_offline_frontend_architecture_3_active_run_experience_post_run_summary_modal",
+      "community": 39,
+      "community_name": "Decisions",
+      "norm_label": "3. active run experience & post-run summary modal"
+    },
+    {
+      "label": "4. Navigation Architecture & Tabs",
+      "file_type": "document",
+      "source_file": "docs/docs/ui/0001-offline-frontend-architecture.md",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "docs_docs_ui_0001_offline_frontend_architecture_4_navigation_architecture_tabs",
+      "community": 39,
+      "community_name": "Decisions",
+      "norm_label": "4. navigation architecture & tabs"
+    },
+    {
+      "label": "ADR 0001: Offline-First Standalone Mobile Frontend Architecture",
+      "file_type": "document",
+      "source_file": "docs/docs/ui/0001-offline-frontend-architecture.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_docs_ui_0001_offline_frontend_architecture_adr_0001_offline_first_standalone_mobile_frontend_architecture",
+      "community": 39,
+      "community_name": "Decisions",
+      "norm_label": "adr 0001: offline-first standalone mobile frontend architecture"
+    },
+    {
+      "label": "Consequences & Follow-ups",
+      "file_type": "document",
+      "source_file": "docs/docs/ui/0001-offline-frontend-architecture.md",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "docs_docs_ui_0001_offline_frontend_architecture_consequences_follow_ups",
+      "community": 39,
+      "community_name": "Decisions",
+      "norm_label": "consequences & follow-ups"
+    },
+    {
+      "label": "Context & Problem Statement",
+      "file_type": "document",
+      "source_file": "docs/docs/ui/0001-offline-frontend-architecture.md",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "docs_docs_ui_0001_offline_frontend_architecture_context_problem_statement",
+      "community": 39,
+      "community_name": "Decisions",
+      "norm_label": "context & problem statement"
+    },
+    {
+      "label": "Decisions",
+      "file_type": "document",
+      "source_file": "docs/docs/ui/0001-offline-frontend-architecture.md",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "docs_docs_ui_0001_offline_frontend_architecture_decisions",
+      "community": 39,
+      "community_name": "Decisions",
+      "norm_label": "decisions"
+    },
+    {
+      "label": "Application",
       "file_type": "code",
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_geo_hexgeojsonmapper_kt_hexindexer",
+      "id": "application",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
-      "norm_label": "hexindexer"
+      "community_name": "AppModule.kt",
+      "norm_label": "application"
     },
     {
       "label": "FitQuestApi.kt",
@@ -6701,8 +6789,41 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_network_fitquestapi",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": "fitquestapi.kt"
+    },
+    {
+      "label": "MapViewportResponse",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_network_fitquestapi_kt_mapviewportresponse",
+      "community": 4,
+      "community_name": "AppModule.kt",
+      "norm_label": "mapviewportresponse"
+    },
+    {
+      "label": "RunSyncPayload",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_network_fitquestapi_kt_runsyncpayload",
+      "community": 4,
+      "community_name": "AppModule.kt",
+      "norm_label": "runsyncpayload"
+    },
+    {
+      "label": "RunSyncSummary",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_network_fitquestapi_kt_runsyncsummary",
+      "community": 4,
+      "community_name": "AppModule.kt",
+      "norm_label": "runsyncsummary"
     },
     {
       "label": "FitQuestModels.kt",
@@ -6712,8 +6833,19 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_network_models_fitquestmodels",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": "fitquestmodels.kt"
+    },
+    {
+      "label": "AppModule.kt",
+      "file_type": "code",
+      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/di/AppModule.kt",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_di_appmodule",
+      "community": 4,
+      "community_name": "AppModule.kt",
+      "norm_label": "appmodule.kt"
     },
     {
       "label": "CaptureScreenModel.kt",
@@ -6723,7 +6855,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_features_capture_capturescreenmodel",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": "capturescreenmodel.kt"
     },
     {
@@ -6734,7 +6866,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_features_capture_capturescreenmodel_kt_job",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": "job"
     },
     {
@@ -6745,8 +6877,19 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_features_capture_capturestate",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": "capturestate.kt"
+    },
+    {
+      "label": "FitQuestApp.kt",
+      "file_type": "code",
+      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/FitQuestApp.kt",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_fitquestapp",
+      "community": 4,
+      "community_name": "AppModule.kt",
+      "norm_label": "fitquestapp.kt"
     },
     {
       "label": "CurrentRunScreen.kt",
@@ -6756,7 +6899,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_ui_capture_currentrunscreen",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": "currentrunscreen.kt"
     },
     {
@@ -6767,7 +6910,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_ui_capture_currentrunscreen_kt_modifier",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": "modifier"
     },
     {
@@ -6778,7 +6921,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_ui_capture_currentrunscreen_kt_screen",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": "screen"
     },
     {
@@ -6789,19 +6932,8 @@
       "_origin": "ast",
       "id": "containerhost",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": "containerhost"
-    },
-    {
-      "label": "FeatureCollection",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "id": "featurecollection",
-      "community": 4,
-      "community_name": "CaptureScreenModel.kt",
-      "norm_label": "featurecollection"
     },
     {
       "label": "ScreenModel",
@@ -6811,7 +6943,7 @@
       "_origin": "ast",
       "id": "screenmodel",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": "screenmodel"
     },
     {
@@ -6822,52 +6954,41 @@
       "_origin": "ast",
       "id": "style",
       "community": 4,
-      "community_name": "CaptureScreenModel.kt",
+      "community_name": "AppModule.kt",
       "norm_label": "style"
     },
     {
-      "label": "Commercial & Community Precedents",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L110",
+      "label": "HexGeoJsonMapper.kt",
+      "file_type": "code",
+      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/geo/HexGeoJsonMapper.kt",
+      "source_location": "L1",
       "_origin": "ast",
-      "id": "readme_commercial_community_precedents",
+      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_geo_hexgeojsonmapper",
       "community": 40,
-      "community_name": "Similar Apps & References",
-      "norm_label": "commercial & community precedents"
+      "community_name": "HexGeoJsonMapper",
+      "norm_label": "hexgeojsonmapper.kt"
     },
     {
-      "label": "High-Value Feature Roadmap (Derived from Precedents)",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L126",
+      "label": "HexIndexer",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
       "_origin": "ast",
-      "id": "readme_high_value_feature_roadmap_derived_from_precedents",
+      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_geo_hexgeojsonmapper_kt_hexindexer",
       "community": 40,
-      "community_name": "Similar Apps & References",
-      "norm_label": "high-value feature roadmap (derived from precedents)"
+      "community_name": "HexGeoJsonMapper",
+      "norm_label": "hexindexer"
     },
     {
-      "label": "Open-Source Implementations & Geospatial Tooling",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L119",
+      "label": "FeatureCollection",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
       "_origin": "ast",
-      "id": "readme_open_source_implementations_geospatial_tooling",
+      "id": "featurecollection",
       "community": 40,
-      "community_name": "Similar Apps & References",
-      "norm_label": "open-source implementations & geospatial tooling"
-    },
-    {
-      "label": "Similar Apps & References",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L106",
-      "_origin": "ast",
-      "id": "readme_similar_apps_references",
-      "community": 40,
-      "community_name": "Similar Apps & References",
-      "norm_label": "similar apps & references"
+      "community_name": "HexGeoJsonMapper",
+      "norm_label": "featurecollection"
     },
     {
       "label": "agent_ledger.md",
@@ -6892,6 +7013,28 @@
       "norm_label": "[2026-09-04 12:10] - task: initial project grounding, context scaffolding & similar app references"
     },
     {
+      "label": "[2026-09-04 14:00] - Task: Implement Complete Offline Mobile Frontend Experience",
+      "file_type": "document",
+      "source_file": "docs/agent_ledger.md",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "docs_agent_ledger_2026_09_04_14_00_task_implement_complete_offline_mobile_frontend_experience",
+      "community": 41,
+      "community_name": "FitQuest Agent Execution Ledger",
+      "norm_label": "[2026-09-04 14:00] - task: implement complete offline mobile frontend experience"
+    },
+    {
+      "label": "[2026-09-04 14:35] - Task: Diagnose and Fix Map Visibility in Recon/Run Screen",
+      "file_type": "document",
+      "source_file": "docs/agent_ledger.md",
+      "source_location": "L70",
+      "_origin": "ast",
+      "id": "docs_agent_ledger_2026_09_04_14_35_task_diagnose_and_fix_map_visibility_in_recon_run_screen",
+      "community": 41,
+      "community_name": "FitQuest Agent Execution Ledger",
+      "norm_label": "[2026-09-04 14:35] - task: diagnose and fix map visibility in recon/run screen"
+    },
+    {
       "label": "FitQuest Agent Execution Ledger",
       "file_type": "document",
       "source_file": "docs/agent_ledger.md",
@@ -6901,6 +7044,105 @@
       "community": 41,
       "community_name": "FitQuest Agent Execution Ledger",
       "norm_label": "fitquest agent execution ledger"
+    },
+    {
+      "label": "0001-maplibre-rendering-and-fallback.md",
+      "file_type": "document",
+      "source_file": "docs/docs/map/0001-maplibre-rendering-and-fallback.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_docs_map_0001_maplibre_rendering_and_fallback",
+      "community": 42,
+      "community_name": "ADR 0001: MapLibre Rendering Lifecycle & Tile Fallback Architecture",
+      "norm_label": "0001-maplibre-rendering-and-fallback.md"
+    },
+    {
+      "label": "ADR 0001: MapLibre Rendering Lifecycle & Tile Fallback Architecture",
+      "file_type": "document",
+      "source_file": "docs/docs/map/0001-maplibre-rendering-and-fallback.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "docs_docs_map_0001_maplibre_rendering_and_fallback_adr_0001_maplibre_rendering_lifecycle_tile_fallback_architecture",
+      "community": 42,
+      "community_name": "ADR 0001: MapLibre Rendering Lifecycle & Tile Fallback Architecture",
+      "norm_label": "adr 0001: maplibre rendering lifecycle & tile fallback architecture"
+    },
+    {
+      "label": "Consequences & Validation",
+      "file_type": "document",
+      "source_file": "docs/docs/map/0001-maplibre-rendering-and-fallback.md",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "docs_docs_map_0001_maplibre_rendering_and_fallback_consequences_validation",
+      "community": 42,
+      "community_name": "ADR 0001: MapLibre Rendering Lifecycle & Tile Fallback Architecture",
+      "norm_label": "consequences & validation"
+    },
+    {
+      "label": "Context",
+      "file_type": "document",
+      "source_file": "docs/docs/map/0001-maplibre-rendering-and-fallback.md",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "docs_docs_map_0001_maplibre_rendering_and_fallback_context",
+      "community": 42,
+      "community_name": "ADR 0001: MapLibre Rendering Lifecycle & Tile Fallback Architecture",
+      "norm_label": "context"
+    },
+    {
+      "label": "Decision",
+      "file_type": "document",
+      "source_file": "docs/docs/map/0001-maplibre-rendering-and-fallback.md",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "docs_docs_map_0001_maplibre_rendering_and_fallback_decision",
+      "community": 42,
+      "community_name": "ADR 0001: MapLibre Rendering Lifecycle & Tile Fallback Architecture",
+      "norm_label": "decision"
+    },
+    {
+      "label": "\ud83d\udce1 API Contracts (Mobile App DTOs)",
+      "file_type": "document",
+      "source_file": "docs/backend-schema.md",
+      "source_location": "L88",
+      "_origin": "ast",
+      "id": "docs_backend_schema_api_contracts_mobile_app_dtos",
+      "community": 43,
+      "community_name": "\ud83d\udce1 API Contracts (Mobile App DTOs)",
+      "norm_label": "\ud83d\udce1 api contracts (mobile app dtos)"
+    },
+    {
+      "label": "Map Viewports (Zoom-Aware)",
+      "file_type": "document",
+      "source_file": "docs/backend-schema.md",
+      "source_location": "L115",
+      "_origin": "ast",
+      "id": "docs_backend_schema_map_viewports_zoom_aware",
+      "community": 43,
+      "community_name": "\ud83d\udce1 API Contracts (Mobile App DTOs)",
+      "norm_label": "map viewports (zoom-aware)"
+    },
+    {
+      "label": "Runs Payload (The Sync Engine)",
+      "file_type": "document",
+      "source_file": "docs/backend-schema.md",
+      "source_location": "L90",
+      "_origin": "ast",
+      "id": "docs_backend_schema_runs_payload_the_sync_engine",
+      "community": 43,
+      "community_name": "\ud83d\udce1 API Contracts (Mobile App DTOs)",
+      "norm_label": "runs payload (the sync engine)"
+    },
+    {
+      "label": "Users (Flattened)",
+      "file_type": "document",
+      "source_file": "docs/backend-schema.md",
+      "source_location": "L120",
+      "_origin": "ast",
+      "id": "docs_backend_schema_users_flattened",
+      "community": 43,
+      "community_name": "\ud83d\udce1 API Contracts (Mobile App DTOs)",
+      "norm_label": "users (flattened)"
     },
     {
       "label": "users/models.py",
@@ -7123,17 +7365,6 @@
       "norm_label": "full user response including activity tracking."
     },
     {
-      "label": "Application",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "id": "application",
-      "community": 6,
-      "community_name": "AppModule.kt",
-      "norm_label": "application"
-    },
-    {
       "label": "CapturedHexEntity.kt",
       "file_type": "code",
       "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/data/local/CapturedHexEntity.kt",
@@ -7141,7 +7372,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_data_local_capturedhexentity",
       "community": 6,
-      "community_name": "AppModule.kt",
+      "community_name": "HexRepository",
       "norm_label": "capturedhexentity.kt"
     },
     {
@@ -7152,7 +7383,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_data_local_hexdao",
       "community": 6,
-      "community_name": "AppModule.kt",
+      "community_name": "HexRepository",
       "norm_label": "hexdao.kt"
     },
     {
@@ -7163,7 +7394,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_data_local_hexdao_kt_flow",
       "community": 6,
-      "community_name": "AppModule.kt",
+      "community_name": "HexRepository",
       "norm_label": "flow"
     },
     {
@@ -7174,7 +7405,7 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_data_local_hexrepository",
       "community": 6,
-      "community_name": "AppModule.kt",
+      "community_name": "HexRepository",
       "norm_label": "hexrepository.kt"
     },
     {
@@ -7185,63 +7416,8 @@
       "_origin": "ast",
       "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_data_local_hexrepository_kt_flow",
       "community": 6,
-      "community_name": "AppModule.kt",
+      "community_name": "HexRepository",
       "norm_label": "flow"
-    },
-    {
-      "label": "MapViewportResponse",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_network_fitquestapi_kt_mapviewportresponse",
-      "community": 6,
-      "community_name": "AppModule.kt",
-      "norm_label": "mapviewportresponse"
-    },
-    {
-      "label": "RunSyncPayload",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_network_fitquestapi_kt_runsyncpayload",
-      "community": 6,
-      "community_name": "AppModule.kt",
-      "norm_label": "runsyncpayload"
-    },
-    {
-      "label": "RunSyncSummary",
-      "file_type": "code",
-      "source_file": "",
-      "source_location": "",
-      "_origin": "ast",
-      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_network_fitquestapi_kt_runsyncsummary",
-      "community": 6,
-      "community_name": "AppModule.kt",
-      "norm_label": "runsyncsummary"
-    },
-    {
-      "label": "AppModule.kt",
-      "file_type": "code",
-      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/di/AppModule.kt",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_di_appmodule",
-      "community": 6,
-      "community_name": "AppModule.kt",
-      "norm_label": "appmodule.kt"
-    },
-    {
-      "label": "FitQuestApp.kt",
-      "file_type": "code",
-      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/FitQuestApp.kt",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "apps_app_fitquest_src_main_java_com_example_mobileapp_fitquestapp",
-      "community": 6,
-      "community_name": "AppModule.kt",
-      "norm_label": "fitquestapp.kt"
     },
     {
       "label": "PermissionManager.kt",
@@ -7949,7 +8125,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/capture/HexCaptureEngine.kt",
-      "source_location": "L70",
+      "source_location": "L88",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_capture_hexcaptureengine_hexcaptureengine_starttracking",
@@ -8392,7 +8568,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/ui/capture/CurrentRunScreen.kt",
-      "source_location": "L399",
+      "source_location": "L414",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_app_fitquest_src_main_java_com_example_mobileapp_ui_capture_currentrunscreen_capturemap",
@@ -8955,7 +9131,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/capture/HexCaptureEngine.kt",
-      "source_location": "L43",
+      "source_location": "L61",
       "weight": 1.0,
       "context": "field",
       "_origin": "ast",
@@ -8967,7 +9143,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/capture/HexCaptureEngine.kt",
-      "source_location": "L46",
+      "source_location": "L64",
       "weight": 1.0,
       "context": "field",
       "_origin": "ast",
@@ -9172,7 +9348,7 @@
       "context": "generic_arg",
       "confidence": "EXTRACTED",
       "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/capture/HexCaptureEngine.kt",
-      "source_location": "L43",
+      "source_location": "L61",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_capture_hexcaptureengine_hexcaptureengine",
@@ -10698,6 +10874,21 @@
       "_origin": "ast",
       "source": "apps_app_fitquest_src_main_java_com_example_mobileapp_ui_profile_profiletab",
       "target": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_data_local_userprofilerepository_userprofilerepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/capture/HexCaptureEngine.kt",
+      "source_location": "L18",
+      "weight": 1.0,
+      "metadata": {
+        "target_fqn": "com.example.mobileapp.core.dev.DevLocationSimulator"
+      },
+      "_origin": "ast",
+      "source": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_capture_hexcaptureengine",
+      "target": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_dev_devlocationsimulator_devlocationsimulator",
       "confidence_score": 1.0
     },
     {
@@ -14076,7 +14267,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/ui/capture/CurrentRunScreen.kt",
-      "source_location": "L544",
+      "source_location": "L555",
       "weight": 1.0,
       "context": "parameter_type",
       "_origin": "ast",
@@ -15035,7 +15226,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": ".agent-context.md",
-      "source_location": "L77",
+      "source_location": "L81",
       "weight": 1.0,
       "_origin": "ast",
       "source": "agent_context",
@@ -15046,7 +15237,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": ".agent-context.md",
-      "source_location": "L79",
+      "source_location": "L83",
       "weight": 1.0,
       "_origin": "ast",
       "source": "agent_context_active_working_memory_block_dynamic_suffix",
@@ -15068,17 +15259,6 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": ".agent-context.md",
-      "source_location": "L28",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "agent_context_fitquest_agent_context",
-      "target": "agent_context_directory_topology",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".agent-context.md",
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
@@ -15090,7 +15270,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": ".agent-context.md",
-      "source_location": "L69",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agent_context_fitquest_agent_context",
+      "target": "agent_context_directory_topology",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".agent-context.md",
+      "source_location": "L73",
       "weight": 1.0,
       "_origin": "ast",
       "source": "agent_context_fitquest_agent_context",
@@ -15123,7 +15314,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": ".agent-context.md",
-      "source_location": "L24",
+      "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast",
       "source": "agent_context_immutable_schemas_contracts",
@@ -16190,7 +16381,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/capture/HexCaptureEngine.kt",
-      "source_location": "L18",
+      "source_location": "L20",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_capture_hexcaptureengine",
@@ -16201,7 +16392,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/capture/HexCaptureEngine.kt",
-      "source_location": "L27",
+      "source_location": "L29",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_capture_hexcaptureengine",
@@ -16817,7 +17008,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/ui/capture/CurrentRunScreen.kt",
-      "source_location": "L544",
+      "source_location": "L555",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_app_fitquest_src_main_java_com_example_mobileapp_ui_capture_currentrunscreen",
@@ -17213,11 +17404,33 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/agent_ledger.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_agent_ledger_fitquest_agent_execution_ledger",
+      "target": "docs_agent_ledger_2026_09_04_14_00_task_implement_complete_offline_mobile_frontend_experience",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/agent_ledger.md",
       "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
       "source": "docs_agent_ledger_fitquest_agent_execution_ledger",
       "target": "docs_agent_ledger_2026_09_04_12_10_task_initial_project_grounding_context_scaffolding_similar_app_references",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/agent_ledger.md",
+      "source_location": "L70",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_agent_ledger_fitquest_agent_execution_ledger",
+      "target": "docs_agent_ledger_2026_09_04_14_35_task_diagnose_and_fix_map_visibility_in_recon_run_screen",
       "confidence_score": 1.0
     },
     {
@@ -17636,6 +17849,138 @@
       "_origin": "ast",
       "source": "docs_docs_architecture_0001_project_grounding_and_territory_engine_decisions",
       "target": "docs_docs_architecture_0001_project_grounding_and_territory_engine_1_spatial_partitioning_uber_h3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/docs/map/0001-maplibre-rendering-and-fallback.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_docs_map_0001_maplibre_rendering_and_fallback",
+      "target": "docs_docs_map_0001_maplibre_rendering_and_fallback_adr_0001_maplibre_rendering_lifecycle_tile_fallback_architecture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/docs/map/0001-maplibre-rendering-and-fallback.md",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_docs_map_0001_maplibre_rendering_and_fallback_adr_0001_maplibre_rendering_lifecycle_tile_fallback_architecture",
+      "target": "docs_docs_map_0001_maplibre_rendering_and_fallback_decision",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/docs/map/0001-maplibre-rendering-and-fallback.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_docs_map_0001_maplibre_rendering_and_fallback_adr_0001_maplibre_rendering_lifecycle_tile_fallback_architecture",
+      "target": "docs_docs_map_0001_maplibre_rendering_and_fallback_consequences_validation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/docs/map/0001-maplibre-rendering-and-fallback.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_docs_map_0001_maplibre_rendering_and_fallback_adr_0001_maplibre_rendering_lifecycle_tile_fallback_architecture",
+      "target": "docs_docs_map_0001_maplibre_rendering_and_fallback_context",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/docs/ui/0001-offline-frontend-architecture.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_docs_ui_0001_offline_frontend_architecture",
+      "target": "docs_docs_ui_0001_offline_frontend_architecture_adr_0001_offline_first_standalone_mobile_frontend_architecture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/docs/ui/0001-offline-frontend-architecture.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_docs_ui_0001_offline_frontend_architecture_adr_0001_offline_first_standalone_mobile_frontend_architecture",
+      "target": "docs_docs_ui_0001_offline_frontend_architecture_context_problem_statement",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/docs/ui/0001-offline-frontend-architecture.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_docs_ui_0001_offline_frontend_architecture_adr_0001_offline_first_standalone_mobile_frontend_architecture",
+      "target": "docs_docs_ui_0001_offline_frontend_architecture_consequences_follow_ups",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/docs/ui/0001-offline-frontend-architecture.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_docs_ui_0001_offline_frontend_architecture_adr_0001_offline_first_standalone_mobile_frontend_architecture",
+      "target": "docs_docs_ui_0001_offline_frontend_architecture_decisions",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/docs/ui/0001-offline-frontend-architecture.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_docs_ui_0001_offline_frontend_architecture_decisions",
+      "target": "docs_docs_ui_0001_offline_frontend_architecture_2_onboarding_dynamic_app_initialization",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/docs/ui/0001-offline-frontend-architecture.md",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_docs_ui_0001_offline_frontend_architecture_decisions",
+      "target": "docs_docs_ui_0001_offline_frontend_architecture_3_active_run_experience_post_run_summary_modal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/docs/ui/0001-offline-frontend-architecture.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_docs_ui_0001_offline_frontend_architecture_decisions",
+      "target": "docs_docs_ui_0001_offline_frontend_architecture_4_navigation_architecture_tabs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/docs/ui/0001-offline-frontend-architecture.md",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "docs_docs_ui_0001_offline_frontend_architecture_decisions",
+      "target": "docs_docs_ui_0001_offline_frontend_architecture_1_local_first_room_persistence_expansion",
       "confidence_score": 1.0
     },
     {
@@ -18075,7 +18420,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "docs_todo_implementation_plan_offline_frontend_sprint",
-      "target": "docs_todo_6_profile_achievements_settings_profiletab_kt",
+      "target": "docs_todo_6_profile_achievements_settings_profiletab_kt_achievementstab_kt",
       "confidence_score": 1.0
     },
     {
@@ -18896,22 +19241,22 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/capture/HexCaptureEngine.kt",
-      "source_location": "L48",
+      "source_location": "L110",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_capture_hexcaptureengine_hexcaptureengine",
-      "target": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_capture_hexcaptureengine_hexcaptureengine_starttracking",
+      "target": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_capture_hexcaptureengine_hexcaptureengine_stoptracking",
       "confidence_score": 1.0
     },
     {
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/core/capture/HexCaptureEngine.kt",
-      "source_location": "L92",
+      "source_location": "L66",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_capture_hexcaptureengine_hexcaptureengine",
-      "target": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_capture_hexcaptureengine_hexcaptureengine_stoptracking",
+      "target": "apps_app_fitquest_src_main_java_com_example_mobileapp_core_capture_hexcaptureengine_hexcaptureengine_starttracking",
       "confidence_score": 1.0
     },
     {
@@ -20872,7 +21217,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "apps/app/fitquest/src/main/java/com/example/mobileapp/ui/capture/CurrentRunScreen.kt",
-      "source_location": "L483",
+      "source_location": "L507",
       "weight": 1.0,
       "_origin": "ast",
       "source": "apps_app_fitquest_src_main_java_com_example_mobileapp_ui_capture_currentrunscreen_capturemap",
@@ -20880,5 +21225,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "eafc60330b5302b8b7be1e514ad22325473e7dc2"
+  "built_at_commit": "7ab98158fc2904f003d34df46de52792b227ad8e"
 }

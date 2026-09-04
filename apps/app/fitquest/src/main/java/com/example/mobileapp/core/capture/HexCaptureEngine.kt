@@ -15,8 +15,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-import com.example.mobileapp.core.dev.DevLocationSimulator
-
 data class HexCaptureSnapshot(
     val isTracking: Boolean = false,
     val currentHexId: String? = null,
@@ -32,64 +30,75 @@ class HexCaptureEngine(
     private val hexRepository: HexRepository,
     private val hexIndexer: HexIndexer,
 ) {
-    // TODO(TESTING): Resolution 10 gives ~65 m hex edges — faster capture feedback for dev.
-    //  Switch to 9 (~174 m) or higher after field testing for the right gameplay feel.
     private val h3Resolution = 10
-
-    // TODO(TESTING): k=2 gives ~19 visible hexes around the user.
-    //  Increase for a wider visible area; decrease for performance on low-end devices.
     private val nearbyRingSize = 2
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
-    private val _state = MutableStateFlow(
-        run {
-            val initialPoint = DevLocationSimulator.DEFAULT_WALK_PATH.first()
-            val initialHex = if (hexIndexer.isAvailable()) {
-                hexIndexer.latLngToHexId(initialPoint.latitude, initialPoint.longitude, h3Resolution)
-            } else null
-            val initialNearby = if (hexIndexer.isAvailable()) {
-                hexIndexer.getHexesInRadius(initialPoint.latitude, initialPoint.longitude, h3Resolution, nearbyRingSize)
-            } else emptyList()
-
-            HexCaptureSnapshot(
-                currentLocation = initialPoint,
-                currentHexId = initialHex,
-                nearbyHexIds = initialNearby
-            )
-        }
-    )
+    private val _state = MutableStateFlow(HexCaptureSnapshot())
     val state: StateFlow<HexCaptureSnapshot> = _state.asStateFlow()
 
     private var locationJob: Job? = null
     private var stepsJob: Job? = null
 
-    fun startTracking() {
-        if (_state.value.isTracking) return
-        if (!hexIndexer.isAvailable()) return
+    init {
+        startLocationMonitoring()
+    }
 
-        _state.update { it.copy(isTracking = true) }
-
+    private fun startLocationMonitoring() {
+        locationJob?.cancel()
         locationJob = scope.launch {
-            locationTrackingManager.observeLocations().collect { location ->
-                val hexId = hexIndexer.latLngToHexId(
-                    location.latitude,
-                    location.longitude,
-                    h3Resolution
-                )
-                val nearby = hexIndexer.getHexesInRadius(
-                    location.latitude,
-                    location.longitude,
-                    h3Resolution,
-                    nearbyRingSize
-                )
-                _state.update {
-                    it.copy(
-                        currentHexId = hexId,
-                        currentLocation = GeoPoint(location.latitude, location.longitude),
-                        nearbyHexIds = nearby
-                    )
+            // First attempt to get the user's real last known location immediately
+            locationTrackingManager.getLastLocation { loc ->
+                if (loc != null && _state.value.currentLocation == null) {
+                    handleLocation(loc.latitude, loc.longitude)
                 }
             }
+
+            // Continuously observe real GPS location updates
+            locationTrackingManager.observeLocations().collect { location ->
+                handleLocation(location.latitude, location.longitude)
+            }
+        }
+    }
+
+    private fun handleLocation(latitude: Double, longitude: Double) {
+        val hexId = if (hexIndexer.isAvailable()) {
+            hexIndexer.latLngToHexId(latitude, longitude, h3Resolution)
+        } else null
+
+        val nearby = if (hexIndexer.isAvailable()) {
+            hexIndexer.getHexesInRadius(latitude, longitude, h3Resolution, nearbyRingSize)
+        } else emptyList()
+
+        _state.update { snapshot ->
+            val updated = snapshot.copy(
+                currentLocation = GeoPoint(latitude, longitude),
+                currentHexId = hexId,
+                nearbyHexIds = nearby
+            )
+
+            if (snapshot.isTracking && hexId != null) {
+                val hexMap = snapshot.hexesToSteps.toMutableMap()
+                if (!hexMap.containsKey(hexId)) {
+                    hexMap[hexId] = 0
+                }
+                updated.copy(hexesToSteps = hexMap)
+            } else {
+                updated
+            }
+        }
+    }
+
+    fun startTracking() {
+        if (_state.value.isTracking) return
+
+        _state.update {
+            val initialHexMap = it.currentHexId?.let { hexId -> mapOf(hexId to 0) } ?: emptyMap()
+            it.copy(
+                isTracking = true,
+                sessionSteps = 0,
+                hexesToSteps = initialHexMap
+            )
         }
 
         stepsJob = scope.launch {
@@ -110,9 +119,7 @@ class HexCaptureEngine(
     fun stopTracking() {
         if (!_state.value.isTracking) return
 
-        locationJob?.cancel()
         stepsJob?.cancel()
-        locationJob = null
         stepsJob = null
 
         val finishedSession = _state.value.hexesToSteps
@@ -125,11 +132,8 @@ class HexCaptureEngine(
         _state.update {
             it.copy(
                 isTracking = false,
-                currentHexId = null,
-                currentLocation = null,
                 sessionSteps = 0,
-                hexesToSteps = emptyMap(),
-                nearbyHexIds = emptyList()
+                hexesToSteps = emptyMap()
             )
         }
     }

@@ -86,3 +86,25 @@
   - *Immediate Coordinates & Grid*: Pre-populating default coordinates and nearby hexes prevents the map from defaulting to coordinate (0, 0) in the Atlantic Ocean and ensures the territorial grid is visible even before clicking "Start Capture".
 - **Result Status:** All 57 Gradle test tasks pass cleanly (`./gradlew :app:test` passed in 5s). Map canvas, tile layer, and hex overlays render properly.
 
+## [2026-09-04 15:00] - Task: Migrate to Standard Map View and Pure Hardware Sensors
+
+- **Objective:** Eliminate all mock data and simulations (`DevStepSimulator`, `DevLocationSimulator`, hardcoded San Francisco coordinates) so the application functions purely on real physical hardware sensors without automatic step increments. Migrate MapLibre from env-dependent vector tiles to a standard, self-contained OpenStreetMap/CARTO raster tile style providing full zoom 0-20 street maps worldwide with zero API keys.
+- **Assumptions Declared:**
+  - Real devices have either `Sensor.TYPE_STEP_COUNTER` or `Sensor.TYPE_STEP_DETECTOR`, and physical GPS is acquired through `FusedLocationProviderClient`.
+  - When the user is stationary, step deltas and distance must strictly remain 0.
+  - No `.env` file, MapTiler account, or remote style download should be required to display the map.
+- **Modifications Matrix:**
+  - `apps/app/fitquest/build.gradle.kts` (modified: removed demotiles fallback and mandatory env URL dependency)
+  - `apps/app/fitquest/src/main/java/com/example/mobileapp/core/sensors/StepSensorManager.kt` (modified: removed `DevStepSimulator`, wired real hardware `TYPE_STEP_COUNTER` and `TYPE_STEP_DETECTOR`)
+  - `apps/app/fitquest/src/main/java/com/example/mobileapp/core/sensors/LocationTrackingManager.kt` (modified: removed `DevLocationSimulator`, wired pure `FusedLocationProviderClient` with `getLastLocation`)
+  - `apps/app/fitquest/src/main/java/com/example/mobileapp/core/capture/HexCaptureEngine.kt` (modified: removed hardcoded coordinates, added passive real-time GPS monitoring)
+  - `apps/app/fitquest/src/main/java/com/example/mobileapp/di/AppModule.kt` (modified: removed `useDevLocation` and `useDevSteps` toggles)
+  - `apps/app/fitquest/src/main/java/com/example/mobileapp/ui/capture/CurrentRunScreen.kt` (modified: implemented `STANDARD_MAP_STYLE_JSON` with CARTO Voyager raster tiles, synchronous `MapView` instantiation in Compose `AndroidView`, real-time camera centering)
+  - `docs/docs/map/0002-standard-raster-map-and-real-sensors.md` (created: ADR 0002 documenting raster architecture and hardware sensor pipeline)
+- **Decision Logic:**
+  - *Standard Raster Tiles*: Demotiles only had zoom levels 0-6, which was why zoom 16 appeared invisible. CARTO Voyager / OSM raster tiles provide complete global street-level maps from zoom 0 to 20 with zero API key or `.env` requirement.
+  - *Direct AndroidView Lifecycle*: Instantiating `MapView` via `remember` and returning it inside `AndroidView.factory` allows Compose to measure and attach the Surface directly into the view hierarchy, eliminating race conditions from deferred `LaunchedEffect` instantiation.
+  - *Zero-Simulation Sensor Pipeline*: Tying step events exclusively to hardware sensor listeners ensures steps increment only when the user physically moves. Passive GPS monitoring initializes the user's real geographic location and nearby hexes immediately upon screen display.
+- **Result Status:** All 57 Gradle test tasks pass cleanly (`:app:test` in 5s). `:app:assembleDebug` builds successfully in 7s.
+
+
