@@ -6,7 +6,7 @@ import org.junit.Test
 
 class HexGeoJsonMapperTest {
     @Test
-    fun `toFeatureCollectionJson returns polygon feature json for one valid hex`() {
+    fun `toGeoJsonString returns polygon feature json for one valid hex`() {
         val indexer = object : HexIndexer {
             override fun latLngToHexId(latitude: Double, longitude: Double, resolution: Int): String {
                 return "test_hex"
@@ -22,10 +22,14 @@ class HexGeoJsonMapperTest {
                     GeoPoint(12.9714, 77.5941)
                 )
             }
+
+            override fun getHexesInRadius(latitude: Double, longitude: Double, resolution: Int, ringSize: Int): List<String> {
+                return listOf("test_hex")
+            }
         }
         val hexId = "test_hex"
 
-        val collectionJson = HexGeoJsonMapper.toFeatureCollectionJson(indexer, listOf(hexId))
+        val collectionJson = HexGeoJsonMapper.toGeoJsonString(indexer, listOf(hexId))
 
         assertTrue(collectionJson.contains("\"type\":\"FeatureCollection\""))
         assertTrue(collectionJson.contains("\"type\":\"Polygon\""))

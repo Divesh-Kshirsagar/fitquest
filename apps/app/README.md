@@ -22,8 +22,8 @@ This app prototype implements a Room-backed Hex Capture loop:
 ## Quick try
 
 ```bash
-cd /home/divesh/Desktop/projects/fitquest/apps/app
-./gradlew :fitquest:test
+cd apps/app
+./gradlew :app:test
 ```
 
 For an Android install/run from Android Studio, open this project and run the `fitquest` module.
