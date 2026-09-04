@@ -1,13 +1,13 @@
 {
   "0": "quests/router.py",
   "1": "map/router.py",
-  "2": "AppModule.kt",
-  "3": "seed.py",
+  "2": "GeoPoint",
+  "3": "runs/service.py",
   "4": "CaptureScreenModel.kt",
   "5": "users/router.py",
-  "6": "CapturedHexEntity",
+  "6": "AppModule.kt",
   "7": "OnboardingScreen.kt",
-  "8": "LocationTrackingManager.kt",
+  "8": "StepSensorManager.kt",
   "9": "UserProfileEntity",
   "10": "AchievementEntity",
   "11": "HomeTab.kt",
@@ -42,6 +42,10 @@
   "40": "ADR 0002: Standard Raster Map Architecture and Real Hardware Sensor Pipeline",
   "41": "FitQuest Agent Execution Ledger",
   "42": "ADR 0001: MapLibre Rendering Lifecycle & Tile Fallback Architecture",
-  "43": "📡 API Contracts (Mobile App DTOs)",
-  "44": "DevStepSimulator.kt"
+  "43": "FitQuestModels.kt",
+  "44": "DevStepSimulator.kt",
+  "45": "LocationTrackingManager.kt",
+  "46": "ADR 0003: MapTiler Vector Streets Integration & Complete Backend Decoupling",
+  "47": "Emulator & Testing Notes",
+  "48": "Getting Started"
 }

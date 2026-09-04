@@ -377,40 +377,11 @@ private fun PermissionGateScreen(
 // Standard Map Style (CARTO Voyager / OSM raster tiles - zero API key/env dependency)
 // ─────────────────────────────────────────────────────────────────────────────
 
-private const val STANDARD_MAP_STYLE_JSON = """{
-  "version": 8,
-  "name": "StandardMap",
-  "sources": {
-    "standard-tiles": {
-      "type": "raster",
-      "tiles": [
-        "https://a.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
-        "https://b.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
-        "https://c.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png",
-        "https://d.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png"
-      ],
-      "tileSize": 256,
-      "maxzoom": 20,
-      "attribution": "© OpenStreetMap contributors, © CARTO"
-    }
-  },
-  "layers": [
-    {
-      "id": "background",
-      "type": "background",
-      "paint": {
-        "background-color": "#E8ECEF"
-      }
-    },
-    {
-      "id": "standard-tiles-layer",
-      "type": "raster",
-      "source": "standard-tiles",
-      "minzoom": 0,
-      "maxzoom": 22
-    }
-  ]
-}"""
+// ─────────────────────────────────────────────────────────────────────────────
+// Vector Map Styles (MapTiler Streets-v2 vector style with OpenFreeMap Liberty fallback)
+// ─────────────────────────────────────────────────────────────────────────────
+
+private const val OPEN_VECTOR_STYLE_URL = "https://tiles.openfreemap.org/styles/liberty"
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Map composable
@@ -427,6 +398,16 @@ private fun CaptureMap(
 
     var mapInstance by remember { mutableStateOf<MapLibreMap?>(null) }
     var isMapReady by remember { mutableStateOf(false) }
+
+    val primaryVectorStyle = remember {
+        if (BuildConfig.MAPTILER_STYLE_URL.isNotBlank()) {
+            BuildConfig.MAPTILER_STYLE_URL
+        } else if (BuildConfig.MAPTILER_API_KEY.isNotBlank()) {
+            "https://api.maptiler.com/maps/streets-v2/style.json?key=${BuildConfig.MAPTILER_API_KEY}"
+        } else {
+            OPEN_VECTOR_STYLE_URL
+        }
+    }
 
     val mapView = remember {
         val options = MapLibreMapOptions.createFromAttributes(context)
@@ -467,13 +448,7 @@ private fun CaptureMap(
                     getMapAsync { mapLibreMap ->
                         mapInstance = mapLibreMap
 
-                        val styleBuilder = if (BuildConfig.MAPTILER_API_KEY.isNotBlank() && BuildConfig.MAPTILER_STYLE_URL.isNotBlank()) {
-                            Style.Builder().fromUri(BuildConfig.MAPTILER_STYLE_URL)
-                        } else {
-                            Style.Builder().fromJson(STANDARD_MAP_STYLE_JSON)
-                        }
-
-                        mapLibreMap.setStyle(styleBuilder) { style ->
+                        mapLibreMap.setStyle(Style.Builder().fromUri(primaryVectorStyle)) { style ->
                             ensureHexLayers(style)
                             isMapReady = true
 
@@ -488,23 +463,21 @@ private fun CaptureMap(
                             }
                         }
 
+                        // Add fallback if primary style fails
+                        addOnDidFailLoadingMapListener {
+                            if (primaryVectorStyle != OPEN_VECTOR_STYLE_URL) {
+                                mapLibreMap.setStyle(Style.Builder().fromUri(OPEN_VECTOR_STYLE_URL)) { fallbackStyle ->
+                                    ensureHexLayers(fallbackStyle)
+                                    isMapReady = true
+                                }
+                            }
+                        }
+
                         state.currentLocation?.let { loc ->
                             mapLibreMap.cameraPosition = CameraPosition.Builder()
                                 .target(LatLng(loc.latitude, loc.longitude))
                                 .zoom(16.0)
                                 .build()
-                        }
-
-                        mapLibreMap.addOnCameraIdleListener {
-                            val bounds = mapLibreMap.projection.visibleRegion.latLngBounds
-                            val zoom = mapLibreMap.cameraPosition.zoom
-                            screenModel.onMapIdle(
-                                minLat = bounds.southWest.latitude,
-                                minLng = bounds.southWest.longitude,
-                                maxLat = bounds.northEast.latitude,
-                                maxLng = bounds.northEast.longitude,
-                                zoom = zoom
-                            )
                         }
                     }
                 }

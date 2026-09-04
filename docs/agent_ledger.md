@@ -107,4 +107,25 @@
   - *Zero-Simulation Sensor Pipeline*: Tying step events exclusively to hardware sensor listeners ensures steps increment only when the user physically moves. Passive GPS monitoring initializes the user's real geographic location and nearby hexes immediately upon screen display.
 - **Result Status:** All 57 Gradle test tasks pass cleanly (`:app:test` in 5s). `:app:assembleDebug` builds successfully in 7s.
 
+## [2026-09-04 16:20] - Task: Fix MapTiler Vector Streets Integration & Decouple Backend Dependencies
+
+- **Objective:** Analyze user log output showing MapTiler 403 Forbidden due to unexpanded `${MAPTILER_API_KEY}` literal in `MAPTILER_STYLE_URL` and CLEARTEXT failures to `http://127.0.0.1:8000/api/v1/map/viewport`. Restore high-resolution vector map rendering using MapTiler Streets v2 with OpenFreeMap Liberty fallback, and purge all backend network dependencies so the frontend functions entirely local-first.
+- **Assumptions Declared:**
+  - The user's `.env` contains a valid MapTiler key `[REDACTED_KEY]`, but Gradle was not performing shell variable expansion on `${MAPTILER_API_KEY}`.
+  - The backend at `http://127.0.0.1:8000` is not yet running, so all OkHttp and Retrofit network calls in `CaptureScreenModel` and `CaptureMap` must be removed.
+- **Modifications Matrix:**
+  - `apps/app/.env` (modified: fixed `MAPTILER_STYLE_URL` to point to `streets-v2` with the actual key embedded)
+  - `.env` (created: mirrored `.env` at project root for consistent multi-directory resolution)
+  - `apps/app/fitquest/build.gradle.kts` (modified: added multi-path candidate resolution, parameter expansion for `${MAPTILER_API_KEY}`, and vector style fallback to OpenFreeMap Liberty)
+  - `apps/app/fitquest/src/main/java/com/example/mobileapp/di/AppModule.kt` (modified: removed Retrofit, OkHttp, and `FitQuestApi` single definitions; updated `CaptureScreenModel` factory)
+  - `apps/app/fitquest/src/main/java/com/example/mobileapp/features/capture/CaptureScreenModel.kt` (modified: removed `FitQuestApi` parameter, `onMapIdle` network call, and `api.syncRunSession`)
+  - `apps/app/fitquest/src/main/java/com/example/mobileapp/ui/capture/CurrentRunScreen.kt` (modified: wired `primaryVectorStyle` with MapTiler Streets v2, added `addOnDidFailLoadingMapListener` runtime fallback to OpenFreeMap Liberty, removed `addOnCameraIdleListener` backend poll)
+  - `docs/docs/map/0003-maptiler-vector-streets-and-offline-decoupling.md` (created: ADR 0003 documenting vector resolution and backend decoupling)
+- **Decision Logic:**
+  - *Parameter Expansion in Gradle*: Rather than assuming Gradle expands shell variables in `.env`, `build.gradle.kts` explicitly replaces `${MAPTILER_API_KEY}` and `$MAPTILER_API_KEY` with the sanitized key, and automatically constructs `https://api.maptiler.com/maps/streets-v2/style.json?key=$mapTilerApiKey`.
+  - *Vector Streets Rendering*: Vector tiles provide sharp roads, text labels, 3D buildings, and smooth zooming. OpenFreeMap Liberty is wired as an automatic runtime fallback should MapTiler encounter network interruption.
+  - *Backend Decoupling*: Removing `FitQuestApi` and `onMapIdle` eliminates CLEARTEXT network exceptions and avoids unnecessary HTTP requests to an offline local server.
+- **Result Status:** All 57 Gradle test tasks pass cleanly (`:app:test` in 9s). `BuildConfig.MAPTILER_STYLE_URL` confirmed containing valid MapTiler Streets v2 endpoint. `:app:assembleDebug` passed in 4s.
+
+
 

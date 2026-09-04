@@ -10,8 +10,6 @@ import com.example.mobileapp.core.data.local.RunSessionRepository
 import com.example.mobileapp.core.data.local.UserProfileRepository
 import com.example.mobileapp.core.geo.HexGeoJsonMapper
 import com.example.mobileapp.core.geo.HexIndexer
-import com.example.mobileapp.core.network.FitQuestApi
-import com.example.mobileapp.core.network.models.RunSyncPayload
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -33,7 +31,6 @@ class CaptureScreenModel(
     private val hexCaptureEngine: HexCaptureEngine,
     private val hexRepository: HexRepository,
     private val hexIndexer: HexIndexer,
-    private val api: FitQuestApi,
     private val userProfileRepository: UserProfileRepository,
     private val runSessionRepository: RunSessionRepository,
     private val questRepository: QuestRepository,
@@ -185,18 +182,6 @@ class CaptureScreenModel(
                         )
                     }
                 }
-
-                // Attempt API sync in background
-                try {
-                    val payload = RunSyncPayload(
-                        total_session_steps = totalSteps,
-                        hexes_to_steps = finalStepsMap
-                    )
-                    val result = api.syncRunSession(payload)
-                    intent { reduce { state.copy(syncSummary = result) } }
-                } catch (_: Exception) {
-                    // Handled offline - already persisted in local Room
-                }
             }
         } else {
             sessionStartTime = System.currentTimeMillis()
@@ -239,22 +224,6 @@ class CaptureScreenModel(
                         reduce { state.copy(durationSeconds = state.durationSeconds + 1) }
                     }
                 }
-            }
-        }
-    }
-
-    fun onMapIdle(minLat: Double, minLng: Double, maxLat: Double, maxLng: Double, zoom: Double) = intent {
-        screenModelScope.launch(Dispatchers.IO) {
-            try {
-                api.getMapViewport(
-                    minLat = minLat,
-                    minLng = minLng,
-                    maxLat = maxLat,
-                    maxLng = maxLng,
-                    zoomLevel = zoom
-                )
-            } catch (_: Exception) {
-                // Offline fallback
             }
         }
     }

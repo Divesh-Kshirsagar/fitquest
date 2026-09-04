@@ -6,9 +6,16 @@ plugins {
 }
 
 val envProperties: Map<String, String> = run {
-    val envFile = rootProject.file(".env")
-    if (!envFile.exists()) {
-        logger.warn(".env file not found at: ${envFile.absolutePath}")
+    val candidates = listOfNotNull(
+        rootProject.file(".env"),
+        project.file(".env"),
+        rootProject.projectDir.parentFile?.resolve("apps/app/.env"),
+        rootProject.projectDir.parentFile?.resolve(".env"),
+        file("../.env")
+    )
+    val envFile = candidates.firstOrNull { it.exists() }
+    if (envFile == null) {
+        logger.warn(".env file not found in candidates")
         emptyMap()
     } else {
         envFile.readLines()
@@ -52,7 +59,19 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         val mapTilerApiKey = envOrDefault("MAPTILER_API_KEY")
-        val mapTilerStyleUrl = envOrDefault("MAPTILER_STYLE_URL")
+        val rawStyleUrl = envOrDefault("MAPTILER_STYLE_URL")
+        val mapTilerStyleUrl = when {
+            rawStyleUrl.isNotEmpty() -> {
+                rawStyleUrl.replace("\${MAPTILER_API_KEY}", mapTilerApiKey)
+                    .replace("\$MAPTILER_API_KEY", mapTilerApiKey)
+            }
+            mapTilerApiKey.isNotEmpty() -> {
+                "https://api.maptiler.com/maps/streets-v2/style.json?key=$mapTilerApiKey"
+            }
+            else -> {
+                "https://tiles.openfreemap.org/styles/liberty"
+            }
+        }
         buildConfigField("String", "MAPTILER_API_KEY", "\"$mapTilerApiKey\"")
         buildConfigField("String", "MAPTILER_STYLE_URL", "\"$mapTilerStyleUrl\"")
     }
