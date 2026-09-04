@@ -40,8 +40,24 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.FilledTonalButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.koin.koinScreenModel
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import com.example.mobileapp.BuildConfig
 import com.example.mobileapp.core.permissions.PermissionManager
 import com.example.mobileapp.features.capture.CaptureScreenModel
@@ -106,6 +122,7 @@ class CurrentRunScreen : Screen {
     }
 
     val state by screenModel.collectAsState()
+    val navigator = LocalNavigator.currentOrThrow
 
     Box(modifier = modifier.fillMaxSize()) {
         CaptureMap(
@@ -114,35 +131,200 @@ class CurrentRunScreen : Screen {
             modifier = Modifier.fillMaxSize()
         )
 
-        // HUD card
-        ElevatedCard(
+        // Top Navigation Bar (Back button)
+        Row(
             modifier = Modifier
-                .align(Alignment.TopCenter)
-                .padding(horizontal = 16.dp, vertical = 24.dp)
+                .align(Alignment.TopStart)
+                .statusBarsPadding()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Column(
-                modifier = Modifier.padding(16.dp),
-                verticalArrangement = Arrangement.spacedBy(6.dp)
+            IconButton(
+                onClick = {
+                    if (state.isTracking) {
+                        screenModel.onToggleTracking()
+                    }
+                    navigator.pop()
+                },
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.85f))
             ) {
-                Text(text = "Session Steps: ${state.sessionSteps}")
-                Text(text = "Current Hex: ${state.currentHexId ?: "-"}")
-                // UPDATE: Display the total count dynamically
-                Text(text = "Captured Hexes: ${state.allCapturedHexes.size}")
+                Text("✕", fontWeight = FontWeight.Bold, fontSize = 18.sp)
             }
         }
 
-        ExtendedFloatingActionButton(
-            onClick = screenModel::onToggleTracking,
-            containerColor = if (state.isTracking) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary,
-            contentColor = Color.White,
+        // Live HUD card
+        ElevatedCard(
+            modifier = Modifier
+                .align(Alignment.TopCenter)
+                .statusBarsPadding()
+                .padding(top = 16.dp, start = 64.dp, end = 16.dp),
+            shape = RoundedCornerShape(16.dp)
+        ) {
+            Column(
+                modifier = Modifier.padding(12.dp),
+                verticalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = if (state.isTracking) "ACTIVE RUN" else "STANDBY",
+                        style = MaterialTheme.typography.labelSmall,
+                        fontWeight = FontWeight.Bold,
+                        color = if (state.isTracking) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline
+                    )
+                    Text(
+                        text = formatDuration(state.durationSeconds),
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    Column {
+                        Text("Steps", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        Text("${state.sessionSteps}", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
+                    }
+                    Column {
+                        Text("Distance", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        Text(String.format("%.2f km", state.distanceMeters / 1000.0), style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
+                    }
+                    Column {
+                        Text("Calories", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        Text("${state.caloriesBurned} kcal", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
+                    }
+                    Column {
+                        Text("Hexes", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        Text("+${state.sessionCapturedHexes.size}", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+                    }
+                }
+
+                Text(
+                    text = "Current Hex: ${state.currentHexId?.take(8) ?: "Scanning..."}",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        }
+
+        // Bottom Controls
+        Row(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
-                .padding(24.dp)
+                .padding(bottom = 32.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(if (state.isTracking) "Stop Capture" else "Start Capture")
+            if (state.isTracking) {
+                FilledTonalButton(
+                    onClick = screenModel::onTogglePause,
+                    shape = RoundedCornerShape(24.dp)
+                ) {
+                    Text(if (state.isPaused) "Resume" else "Pause")
+                }
+            }
+
+            ExtendedFloatingActionButton(
+                onClick = screenModel::onToggleTracking,
+                containerColor = if (state.isTracking) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary,
+                contentColor = Color.White,
+                shape = RoundedCornerShape(28.dp)
+            ) {
+                Text(
+                    text = if (state.isTracking) "Stop & Finish" else "Start Capture",
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+
+        // Post-Run Victory Summary Dialog
+        if (state.showSummaryDialog && state.latestCompletedSession != null) {
+            val session = state.latestCompletedSession!!
+            AlertDialog(
+                onDismissRequest = {
+                    screenModel.dismissSummaryDialog()
+                    navigator.pop()
+                },
+                title = {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
+                        Text("🎉 Run Completed!", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.headlineSmall)
+                        Text("Session territory saved", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    }
+                },
+                text = {
+                    Column(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        Card(
+                            modifier = Modifier.fillMaxWidth(),
+                            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.5f))
+                        ) {
+                            Column(modifier = Modifier.padding(12.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                                Text("+${session.xpEarned} XP Earned", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+                                Text("${session.capturedHexCount} Hexagons Conquered", style = MaterialTheme.typography.bodySmall)
+                            }
+                        }
+
+                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                            Text("Total Steps", style = MaterialTheme.typography.bodyMedium)
+                            Text("${session.totalSteps}", fontWeight = FontWeight.Bold)
+                        }
+                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                            Text("Distance Covered", style = MaterialTheme.typography.bodyMedium)
+                            Text(String.format("%.2f km", session.distanceMeters / 1000.0), fontWeight = FontWeight.Bold)
+                        }
+                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                            Text("Duration", style = MaterialTheme.typography.bodyMedium)
+                            Text(formatDuration(session.durationSeconds), fontWeight = FontWeight.Bold)
+                        }
+                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                            Text("Active Calories", style = MaterialTheme.typography.bodyMedium)
+                            Text("${session.caloriesBurned} kcal", fontWeight = FontWeight.Bold)
+                        }
+
+                        if (state.unlockedAchievements.isNotEmpty()) {
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Text("🏆 Achievements Unlocked:", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.labelLarge)
+                            state.unlockedAchievements.forEach { ach ->
+                                Text("• ${ach.title}: ${ach.description}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.primary)
+                            }
+                        }
+                    }
+                },
+                confirmButton = {
+                    Button(
+                        onClick = {
+                            screenModel.dismissSummaryDialog()
+                            navigator.pop()
+                        },
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text("View Hub & Stats")
+                    }
+                }
+            )
         }
     }
 }
+}
+
+private fun formatDuration(seconds: Long): String {
+    val mins = seconds / 60
+    val secs = seconds % 60
+    val hours = mins / 60
+    return if (hours > 0) {
+        String.format("%02d:%02d:%02d", hours, mins % 60, secs)
+    } else {
+        String.format("%02d:%02d", mins, secs)
+    }
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
