@@ -1,7 +1,7 @@
 # ADR 0003: MapTiler Vector Streets Integration & Complete Backend Decoupling
 
 ## Context
-1. Log analysis revealed that MapLibre failed style loading with HTTP status code 403 because `apps/app/.env.example` defined `MAPTILER_STYLE_URL=https://api.maptiler.com/maps/streets/style.json?key=${MAPTILER_API_KEY}`. When `.env` was created, Gradle did not expand the shell variable expression `${MAPTILER_API_KEY}`, causing the literal string `"${MAPTILER_API_KEY}"` to be requested rather than the user's authentic API key `[REDACTED_KEY]`.
+1. Log analysis revealed that MapLibre failed style loading with HTTP status code 403 because `apps/app/.env.example` defined `MAPTILER_STYLE_URL=https://api.maptiler.com/maps/streets/style.json?key=${MAPTILER_API_KEY}`. When `.env` was created, Gradle did not expand the shell variable expression `${MAPTILER_API_KEY}`, causing the literal string `"${MAPTILER_API_KEY}"` to be requested rather than the user's authentic API key.
 2. Log analysis revealed repeated OkHttp network errors:
    `--> GET http://127.0.0.1:8000/api/v1/map/viewport?...`
    `<-- HTTP FAILED: java.net.UnknownServiceException: CLEARTEXT communication to 127.0.0.1 not permitted by network security policy`.

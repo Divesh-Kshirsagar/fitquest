@@ -111,7 +111,7 @@
 
 - **Objective:** Analyze user log output showing MapTiler 403 Forbidden due to unexpanded `${MAPTILER_API_KEY}` literal in `MAPTILER_STYLE_URL` and CLEARTEXT failures to `http://127.0.0.1:8000/api/v1/map/viewport`. Restore high-resolution vector map rendering using MapTiler Streets v2 with OpenFreeMap Liberty fallback, and purge all backend network dependencies so the frontend functions entirely local-first.
 - **Assumptions Declared:**
-  - The user's `.env` contains a valid MapTiler key `[REDACTED_KEY]`, but Gradle was not performing shell variable expansion on `${MAPTILER_API_KEY}`.
+  - The user's `.env` contains a valid MapTiler key, but Gradle was not performing shell variable expansion on `${MAPTILER_API_KEY}`.
   - The backend at `http://127.0.0.1:8000` is not yet running, so all OkHttp and Retrofit network calls in `CaptureScreenModel` and `CaptureMap` must be removed.
 - **Modifications Matrix:**
   - `apps/app/.env` (modified: fixed `MAPTILER_STYLE_URL` to point to `streets-v2` with the actual key embedded)
@@ -126,6 +126,26 @@
   - *Vector Streets Rendering*: Vector tiles provide sharp roads, text labels, 3D buildings, and smooth zooming. OpenFreeMap Liberty is wired as an automatic runtime fallback should MapTiler encounter network interruption.
   - *Backend Decoupling*: Removing `FitQuestApi` and `onMapIdle` eliminates CLEARTEXT network exceptions and avoids unnecessary HTTP requests to an offline local server.
 - **Result Status:** All 57 Gradle test tasks pass cleanly (`:app:test` in 9s). `BuildConfig.MAPTILER_STYLE_URL` confirmed containing valid MapTiler Streets v2 endpoint. `:app:assembleDebug` passed in 4s.
+
+## [2026-09-04 16:45] - Task: Security Audit Remediation & History Hygiene
+
+- **Objective:** Address security audit findings across the mobile frontend and repository tree: redact sensitive credentials in documentation/ledger, exclude local Room database from cloud auto-backup rules (OWASP MASVS-STORAGE-2 / CWE-312), untrack IDE & AST cache files, and update `.gitignore` with ignore rules for `.idea/`, `.vscode/`, and `graphify-out/cache/`.
+- **Assumptions Declared:**
+  - `fitquest.db` contains user movement and location traces and must not be exported to unencrypted cloud backups.
+  - Device-to-device direct transfer (`device-transfer`) can remain enabled for seamless user phone migration.
+  - Sensitive API key references in documentation must be replaced with generic placeholders.
+- **Modifications Matrix:**
+  - `apps/app/fitquest/src/main/res/xml/data_extraction_rules.xml` (modified: configured `<cloud-backup><exclude domain="database" path="fitquest.db" /></cloud-backup>`)
+  - `apps/app/fitquest/src/main/res/xml/backup_rules.xml` (modified: configured `<exclude domain="database" path="fitquest.db" />` for legacy Android backups)
+  - `.gitignore` (modified: added rules to ignore `.idea/`, `**/.idea/`, `.vscode/`, and `graphify-out/cache/`)
+  - `docs/docs/map/0003-maptiler-vector-streets-and-offline-decoupling.md` (modified: redacted MapTiler API key from context and validation logs)
+  - `docs/agent_ledger.md` (modified: sanitized previous ledger entries and appended audit remediation entry)
+  - Tracked git index (modified: removed cached `.idea/`, `.vscode/`, and `graphify-out/cache/*` files)
+- **Decision Logic:**
+  - *Cloud Backup Hardening*: Explicitly excluding `fitquest.db` from cloud backup prevents automatic upload of unencrypted SQLite databases to Google Drive snapshots, mitigating potential geospatial history extraction on compromised cloud accounts.
+  - *Git Index Hygiene*: Untracking AST and IDE metadata keeps developer-specific state out of source control and prevents clutter in pull requests.
+- **Result Status:** All 57 Gradle test tasks pass (`:app:test` in 3s). AST index updated and verified.
+
 
 
 
