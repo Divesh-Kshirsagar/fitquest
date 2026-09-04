@@ -1,668 +1,680 @@
 {
   "apps/api/app/__init__.py": {
     "mtime": 1788501510.8206708,
-    "seen": 1788510536.1050274,
+    "seen": 1788513104.4994328,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "apps/api/app/api/__init__.py": {
     "mtime": 1788501510.8210797,
-    "seen": 1788510536.1050332,
+    "seen": 1788513104.49944,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "apps/api/app/api/dependencies.py": {
     "mtime": 1788501510.8211784,
-    "seen": 1788510536.1050367,
+    "seen": 1788513104.499444,
     "ast_hash": "f25d2c068d4fb177f0c2f65b1bd357b3",
     "semantic_hash": "f25d2c068d4fb177f0c2f65b1bd357b3"
   },
   "apps/api/app/api/router.py": {
     "mtime": 1788501510.8211784,
-    "seen": 1788510536.1050391,
+    "seen": 1788513104.4994473,
     "ast_hash": "20aecab9cb72ce8b7b8a0f41e6ba230f",
     "semantic_hash": "20aecab9cb72ce8b7b8a0f41e6ba230f"
   },
   "apps/api/app/core/__init__.py": {
     "mtime": 1788501510.8211784,
-    "seen": 1788510536.1050413,
+    "seen": 1788513104.4994495,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "apps/api/app/core/config.py": {
     "mtime": 1788501510.8214715,
-    "seen": 1788510536.1050434,
+    "seen": 1788513104.4994519,
     "ast_hash": "57432bf69daf700b60b045c66125e60e",
     "semantic_hash": "57432bf69daf700b60b045c66125e60e"
   },
   "apps/api/app/core/database.py": {
     "mtime": 1788501510.8214715,
-    "seen": 1788510536.1050453,
+    "seen": 1788513104.4994543,
     "ast_hash": "db985b0e870a9b811847430ef51520b9",
     "semantic_hash": "db985b0e870a9b811847430ef51520b9"
   },
   "apps/api/app/core/security.py": {
     "mtime": 1788501510.8214715,
-    "seen": 1788510536.1050472,
+    "seen": 1788513104.4994562,
     "ast_hash": "dac34a48fc76d32a9f57aaadb16f4591",
     "semantic_hash": "dac34a48fc76d32a9f57aaadb16f4591"
   },
   "apps/api/app/main.py": {
     "mtime": 1788501510.8214715,
-    "seen": 1788510536.1050494,
+    "seen": 1788513104.4994586,
     "ast_hash": "8fb55787c807340199ab6adea71387e0",
     "semantic_hash": "8fb55787c807340199ab6adea71387e0"
   },
   "apps/api/app/modules/__init__.py": {
     "mtime": 1788501510.8214715,
-    "seen": 1788510536.105051,
+    "seen": 1788513104.499461,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "apps/api/app/modules/map/__init__.py": {
     "mtime": 1788501510.821957,
-    "seen": 1788510536.1050532,
+    "seen": 1788513104.4994633,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "apps/api/app/modules/map/models.py": {
     "mtime": 1788501510.8220286,
-    "seen": 1788510536.1050556,
+    "seen": 1788513104.4994657,
     "ast_hash": "2f41ac1fda1a56c90acf39b6321160eb",
     "semantic_hash": "2f41ac1fda1a56c90acf39b6321160eb"
   },
   "apps/api/app/modules/map/router.py": {
     "mtime": 1788501510.8220286,
-    "seen": 1788510536.1050572,
+    "seen": 1788513104.4994686,
     "ast_hash": "78a352c9d3c4e3428bad3c6abf6434df",
     "semantic_hash": "78a352c9d3c4e3428bad3c6abf6434df"
   },
   "apps/api/app/modules/map/schemas.py": {
     "mtime": 1788501510.8220286,
-    "seen": 1788510536.1050599,
+    "seen": 1788513104.4994712,
     "ast_hash": "7ad9b5614653d7f7ba356679e6d32ca3",
     "semantic_hash": "7ad9b5614653d7f7ba356679e6d32ca3"
   },
   "apps/api/app/modules/map/service.py": {
     "mtime": 1788501510.8220286,
-    "seen": 1788510536.1050615,
+    "seen": 1788513104.4994733,
     "ast_hash": "481dc7b62d07574dff7828445dfee6c9",
     "semantic_hash": "481dc7b62d07574dff7828445dfee6c9"
   },
   "apps/api/app/modules/quests/__init__.py": {
     "mtime": 1788501510.8220286,
-    "seen": 1788510536.1050637,
+    "seen": 1788513104.4994757,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "apps/api/app/modules/quests/models.py": {
     "mtime": 1788501510.8224359,
-    "seen": 1788510536.1050656,
+    "seen": 1788513104.4994783,
     "ast_hash": "34d36a335ad8350f6f1529cc183c344b",
     "semantic_hash": "34d36a335ad8350f6f1529cc183c344b"
   },
   "apps/api/app/modules/quests/router.py": {
     "mtime": 1788501510.8224359,
-    "seen": 1788510536.1050675,
+    "seen": 1788513104.4994805,
     "ast_hash": "c27ed9125c778e20109422e73fd5b2ba",
     "semantic_hash": "c27ed9125c778e20109422e73fd5b2ba"
   },
   "apps/api/app/modules/quests/schemas.py": {
     "mtime": 1788501510.8224359,
-    "seen": 1788510536.1050694,
+    "seen": 1788513104.4994833,
     "ast_hash": "cc3882e719102881ce7fd5e9e7f4dd0e",
     "semantic_hash": "cc3882e719102881ce7fd5e9e7f4dd0e"
   },
   "apps/api/app/modules/quests/service.py": {
     "mtime": 1788501510.8224359,
-    "seen": 1788510536.105071,
+    "seen": 1788513104.4994855,
     "ast_hash": "35778152570fb82689948f3dd87c704f",
     "semantic_hash": "35778152570fb82689948f3dd87c704f"
   },
   "apps/api/app/modules/runs/__init__.py": {
     "mtime": 1788501510.8224359,
-    "seen": 1788510536.1050732,
+    "seen": 1788513104.4994876,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "apps/api/app/modules/runs/models.py": {
     "mtime": 1788501510.8228648,
-    "seen": 1788510536.105075,
+    "seen": 1788513104.49949,
     "ast_hash": "98b9e733c51261e848cbaf528bcdf1e0",
     "semantic_hash": "98b9e733c51261e848cbaf528bcdf1e0"
   },
   "apps/api/app/modules/runs/router.py": {
     "mtime": 1788501510.8228648,
-    "seen": 1788510536.1050768,
+    "seen": 1788513104.499492,
     "ast_hash": "a84addbc310fc728c3117a36065cc3a9",
     "semantic_hash": "a84addbc310fc728c3117a36065cc3a9"
   },
   "apps/api/app/modules/runs/schemas.py": {
     "mtime": 1788501510.8228648,
-    "seen": 1788510536.1050794,
+    "seen": 1788513104.4994946,
     "ast_hash": "7fd91d222d07d49a572ba2d19275414a",
     "semantic_hash": "7fd91d222d07d49a572ba2d19275414a"
   },
   "apps/api/app/modules/runs/service.py": {
     "mtime": 1788501510.8228648,
-    "seen": 1788510536.1050806,
+    "seen": 1788513104.4994972,
     "ast_hash": "ebb0c5369495687e9426596f7460b06e",
     "semantic_hash": "ebb0c5369495687e9426596f7460b06e"
   },
   "apps/api/app/modules/users/__init__.py": {
     "mtime": 1788501510.8228648,
-    "seen": 1788510536.105083,
+    "seen": 1788513104.4994996,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "apps/api/app/modules/users/models.py": {
     "mtime": 1788501510.8233151,
-    "seen": 1788510536.105085,
+    "seen": 1788513104.4995017,
     "ast_hash": "c2823e417d36e06c130a003509a5d4c1",
     "semantic_hash": "c2823e417d36e06c130a003509a5d4c1"
   },
   "apps/api/app/modules/users/router.py": {
     "mtime": 1788501510.8233151,
-    "seen": 1788510536.1050868,
+    "seen": 1788513104.4995043,
     "ast_hash": "18494008d49be795a16d7267e1bf87cc",
     "semantic_hash": "18494008d49be795a16d7267e1bf87cc"
   },
   "apps/api/app/modules/users/schemas.py": {
     "mtime": 1788501510.8233151,
-    "seen": 1788510536.1050887,
+    "seen": 1788513104.499507,
     "ast_hash": "a3a865ca4bca4b78a0610d0925f0762a",
     "semantic_hash": "a3a865ca4bca4b78a0610d0925f0762a"
   },
   "apps/api/app/modules/users/service.py": {
     "mtime": 1788501510.8233151,
-    "seen": 1788510536.105091,
+    "seen": 1788513104.4995086,
     "ast_hash": "f653b9f14c9075009b2b28dd58370019",
     "semantic_hash": "f653b9f14c9075009b2b28dd58370019"
   },
   "apps/api/seed.py": {
     "mtime": 1788501510.8234317,
-    "seen": 1788510536.1050925,
+    "seen": 1788513104.499511,
     "ast_hash": "f69ae7c6dedc75949dde81ffeb899622",
     "semantic_hash": "f69ae7c6dedc75949dde81ffeb899622"
   },
   "apps/app/build.gradle.kts": {
     "mtime": 1788501510.8254318,
-    "seen": 1788510536.1050944,
+    "seen": 1788513104.4995136,
     "ast_hash": "77cd394b477309545da7507c821b0346",
     "semantic_hash": "77cd394b477309545da7507c821b0346"
   },
   "apps/app/fitquest/build.gradle.kts": {
-    "mtime": 1788501510.8260832,
-    "seen": 1788510536.1050973,
-    "ast_hash": "87637c59742ef1d92dd5fb4da4976bf2",
-    "semantic_hash": "87637c59742ef1d92dd5fb4da4976bf2"
+    "mtime": 1788512483.4521813,
+    "seen": 1788513104.499516,
+    "ast_hash": "c3c34da5474a6a3645e4f3061e076fe8",
+    "semantic_hash": ""
   },
   "apps/app/fitquest/src/androidTest/java/com/example/mobileapp/ExampleInstrumentedTest.kt": {
     "mtime": 1788501510.826791,
-    "seen": 1788510536.1050987,
+    "seen": 1788513104.4995182,
     "ast_hash": "d391841ca1158b6ec028cf07446fcf16",
     "semantic_hash": "d391841ca1158b6ec028cf07446fcf16"
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/FitQuestApp.kt": {
     "mtime": 1788501510.8274863,
-    "seen": 1788510536.105101,
+    "seen": 1788513104.49952,
     "ast_hash": "f7eb838476446364500c041f2bf5c361",
     "semantic_hash": "f7eb838476446364500c041f2bf5c361"
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/MainActivity.kt": {
     "mtime": 1788509688.9947164,
-    "seen": 1788510536.1051028,
+    "seen": 1788513104.4995222,
     "ast_hash": "819caaa28b1f3f92dad9ba43bb36d766",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/capture/HexCaptureEngine.kt": {
-    "mtime": 1788501510.8279865,
-    "seen": 1788510536.1051052,
-    "ast_hash": "a5dd59b9c6e8e2bcb1b20af9a6d39369",
-    "semantic_hash": "a5dd59b9c6e8e2bcb1b20af9a6d39369"
+    "mtime": 1788512525.851748,
+    "seen": 1788513104.4995248,
+    "ast_hash": "cf795db12b8e09825a3a9b6ef538ffdd",
+    "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/data/local/CapturedHexEntity.kt": {
     "mtime": 1788501510.8282743,
-    "seen": 1788510536.1051133,
+    "seen": 1788513104.499535,
     "ast_hash": "f52d57ce8219c9074f13eebde75e3723",
     "semantic_hash": "f52d57ce8219c9074f13eebde75e3723"
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/data/local/FitQuestDatabase.kt": {
     "mtime": 1788509122.7327535,
-    "seen": 1788510536.1051195,
+    "seen": 1788513104.4995422,
     "ast_hash": "d8ad6daa59e309d5f49e969a6fbaa8a6",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/data/local/HexDao.kt": {
     "mtime": 1788501510.8284278,
-    "seen": 1788510536.1051219,
+    "seen": 1788513104.4995449,
     "ast_hash": "aaa611dd75b3dd89ae52afffdc5bac56",
     "semantic_hash": "aaa611dd75b3dd89ae52afffdc5bac56"
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/data/local/HexRepository.kt": {
     "mtime": 1788501510.8284278,
-    "seen": 1788510536.1051238,
+    "seen": 1788513104.4995472,
     "ast_hash": "5174d3eb0f3316a24d68dd4733a6ebd4",
     "semantic_hash": "5174d3eb0f3316a24d68dd4733a6ebd4"
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/dev/DevLocationSimulator.kt": {
     "mtime": 1788501510.8284318,
-    "seen": 1788510536.105139,
+    "seen": 1788513104.4995685,
     "ast_hash": "2496474106f6c406ca36dce8a74a86a8",
     "semantic_hash": "2496474106f6c406ca36dce8a74a86a8"
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/dev/DevStepSimulator.kt": {
     "mtime": 1788501510.8288884,
-    "seen": 1788510536.105141,
+    "seen": 1788513104.4995706,
     "ast_hash": "a90486c43194f9fc823667521a1f40f4",
     "semantic_hash": "a90486c43194f9fc823667521a1f40f4"
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/geo/HexGeoJsonMapper.kt": {
     "mtime": 1788501510.8288884,
-    "seen": 1788510536.1051433,
+    "seen": 1788513104.4995732,
     "ast_hash": "6f5bae6f0627ceb66c37fb99e3f29a5f",
     "semantic_hash": "6f5bae6f0627ceb66c37fb99e3f29a5f"
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/geo/HexIndexer.kt": {
     "mtime": 1788501510.829143,
-    "seen": 1788510536.1051457,
+    "seen": 1788513104.499576,
     "ast_hash": "b30fa2298fd543f9c1f578192c5de004",
     "semantic_hash": "b30fa2298fd543f9c1f578192c5de004"
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/geo/UberH3HexIndexer.kt": {
     "mtime": 1788501510.829143,
-    "seen": 1788510536.1051476,
+    "seen": 1788513104.499579,
     "ast_hash": "7ad3f3855a5ecd82f7eb51ec70f27287",
     "semantic_hash": "7ad3f3855a5ecd82f7eb51ec70f27287"
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/model/GeoPoint.kt": {
     "mtime": 1788501510.829143,
-    "seen": 1788510536.1051495,
+    "seen": 1788513104.4995818,
     "ast_hash": "5c0998240563e6d38a3419d1626bb8ad",
     "semantic_hash": "5c0998240563e6d38a3419d1626bb8ad"
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/network/FitQuestApi.kt": {
     "mtime": 1788501510.829143,
-    "seen": 1788510536.1051512,
+    "seen": 1788513104.4995842,
     "ast_hash": "406d9a7471a4630882478dfd7297d570",
     "semantic_hash": "406d9a7471a4630882478dfd7297d570"
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/network/models/FitQuestModels.kt": {
     "mtime": 1788501510.8294318,
-    "seen": 1788510536.1051533,
+    "seen": 1788513104.499587,
     "ast_hash": "43fb00af4dbcabaccc34ff8493e2f183",
     "semantic_hash": "43fb00af4dbcabaccc34ff8493e2f183"
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/permissions/PermissionManager.kt": {
     "mtime": 1788501510.8294318,
-    "seen": 1788510536.1051552,
+    "seen": 1788513104.499589,
     "ast_hash": "d264b7204bf3fbbe289734940c2b09b1",
     "semantic_hash": "d264b7204bf3fbbe289734940c2b09b1"
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/sensors/LocationTrackingManager.kt": {
     "mtime": 1788501510.8294318,
-    "seen": 1788510536.1051576,
+    "seen": 1788513104.499591,
     "ast_hash": "04c846afec8b467bf074f6e3898f7951",
     "semantic_hash": "04c846afec8b467bf074f6e3898f7951"
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/sensors/StepSensorManager.kt": {
     "mtime": 1788501510.83022,
-    "seen": 1788510536.1051598,
+    "seen": 1788513104.499594,
     "ast_hash": "dcd43b44c2f6c105b38d6479475991fa",
     "semantic_hash": "dcd43b44c2f6c105b38d6479475991fa"
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/di/AppModule.kt": {
-    "mtime": 1788509159.131689,
-    "seen": 1788510536.105161,
-    "ast_hash": "d85474a14735f6431d47991e7d3141aa",
+    "mtime": 1788512579.7201972,
+    "seen": 1788513104.4995973,
+    "ast_hash": "2e550def8d2dc842d0de418cdafd3953",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/features/capture/CaptureScreenModel.kt": {
     "mtime": 1788509508.347224,
-    "seen": 1788510536.1051636,
+    "seen": 1788513104.4996,
     "ast_hash": "710ea1cb9a88dac552fc00ed8f045749",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/features/capture/CaptureState.kt": {
     "mtime": 1788509177.1566145,
-    "seen": 1788510536.1051643,
+    "seen": 1788513104.4996016,
     "ast_hash": "b0c7b0e418e00635e9ab4e7c1e91f34c",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/ui/auth/LoginScreen.kt": {
     "mtime": 1788501510.8310733,
-    "seen": 1788510536.1051686,
+    "seen": 1788513104.4996066,
     "ast_hash": "14aa46ac55b75d875661041eb83e36cc",
     "semantic_hash": "14aa46ac55b75d875661041eb83e36cc"
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/ui/auth/WelcomeScreen.kt": {
     "mtime": 1788501510.8313646,
-    "seen": 1788510536.1051724,
+    "seen": 1788513104.4996119,
     "ast_hash": "83fcd98f585d279d3ff102af6e43eeeb",
     "semantic_hash": "83fcd98f585d279d3ff102af6e43eeeb"
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/ui/capture/CurrentRunScreen.kt": {
-    "mtime": 1788510179.4395971,
-    "seen": 1788510536.1051743,
-    "ast_hash": "f11c86355150c4724effb4bb8773cf49",
+    "mtime": 1788512562.3073752,
+    "seen": 1788513104.4996142,
+    "ast_hash": "4476629ff4f826d66bc20322a113368f",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/ui/friends/FriendsTab.kt": {
     "mtime": 1788510301.509086,
-    "seen": 1788510536.1051767,
+    "seen": 1788513104.499617,
     "ast_hash": "2828c30b28b4018279f5a05cc8da26dd",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/ui/home/HomeTab.kt": {
     "mtime": 1788509997.7871466,
-    "seen": 1788510536.1051786,
+    "seen": 1788513104.4996204,
     "ast_hash": "89d764fb5fb02b017349cd69b2aa3650",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/ui/leaderboard/LeaderboardTab.kt": {
     "mtime": 1788510232.0833893,
-    "seen": 1788510536.1051805,
+    "seen": 1788513104.499623,
     "ast_hash": "fe0647d3fe1466023b865b2e6e6a12e5",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/ui/main/MainHubScreen.kt": {
     "mtime": 1788510261.9702692,
-    "seen": 1788510536.1051815,
+    "seen": 1788513104.499625,
     "ast_hash": "2f5964106311975652e8ca47d2119f73",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/ui/profile/ProfileTab.kt": {
     "mtime": 1788510281.23518,
-    "seen": 1788510536.1051831,
+    "seen": 1788513104.4996276,
     "ast_hash": "f22296570608dc95978843322c025e83",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/ui/theme/Color.kt": {
     "mtime": 1788501510.8314319,
-    "seen": 1788510536.1051857,
+    "seen": 1788513104.4996297,
     "ast_hash": "057608ec8a62ea5826df0fd060df7991",
     "semantic_hash": "057608ec8a62ea5826df0fd060df7991"
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/ui/theme/Theme.kt": {
     "mtime": 1788501510.832431,
-    "seen": 1788510536.1051877,
+    "seen": 1788513104.499632,
     "ast_hash": "bee33e6564f2e94e63085acd280914c1",
     "semantic_hash": "bee33e6564f2e94e63085acd280914c1"
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/ui/theme/Type.kt": {
     "mtime": 1788501510.832431,
-    "seen": 1788510536.10519,
+    "seen": 1788513104.4996347,
     "ast_hash": "c8f54f4b9a8647a60f0a1f5c4a28cf25",
     "semantic_hash": "c8f54f4b9a8647a60f0a1f5c4a28cf25"
   },
   "apps/app/fitquest/src/test/java/com/example/mobileapp/ExampleUnitTest.kt": {
     "mtime": 1788501510.8445003,
-    "seen": 1788510536.105193,
+    "seen": 1788513104.4996362,
     "ast_hash": "45112ce83dfa454df76af8a197e3b252",
     "semantic_hash": "45112ce83dfa454df76af8a197e3b252"
   },
   "apps/app/fitquest/src/test/java/com/example/mobileapp/core/geo/HexGeoJsonMapperTest.kt": {
     "mtime": 1788503912.9156904,
-    "seen": 1788510536.1051967,
+    "seen": 1788513104.4996414,
     "ast_hash": "085b40904e8cfcf31487bf1dbe97c1d3",
     "semantic_hash": "085b40904e8cfcf31487bf1dbe97c1d3"
   },
   "apps/app/gradlew": {
     "mtime": 1788501510.8454318,
-    "seen": 1788510536.1051996,
+    "seen": 1788513104.4996436,
     "ast_hash": "02c16663c6f0aa37f98d94d698c22b8c",
     "semantic_hash": "02c16663c6f0aa37f98d94d698c22b8c"
   },
   "apps/app/settings.gradle.kts": {
     "mtime": 1788501510.8465254,
-    "seen": 1788510536.1052022,
+    "seen": 1788513104.4996462,
     "ast_hash": "c03b1902140094beddf19abc5a4b07db",
     "semantic_hash": "c03b1902140094beddf19abc5a4b07db"
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/data/local/AchievementDao.kt": {
     "mtime": 1788509117.5381908,
-    "seen": 1788510536.1051075,
+    "seen": 1788513104.4995272,
     "ast_hash": "e64d67b3f750631f17ade57c209fc0d8",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/data/local/AchievementEntity.kt": {
     "mtime": 1788509084.4293768,
-    "seen": 1788510536.1051095,
+    "seen": 1788513104.49953,
     "ast_hash": "8ceda895cbfabe55ad087dd43e9b5e58",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/data/local/AchievementRepository.kt": {
     "mtime": 1788509150.7383957,
-    "seen": 1788510536.1051114,
+    "seen": 1788513104.4995327,
     "ast_hash": "5362cdcc112ca74efeae62bd30379ebf",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/data/local/DailyQuestDao.kt": {
     "mtime": 1788509106.5041199,
-    "seen": 1788510536.1051152,
+    "seen": 1788513104.4995377,
     "ast_hash": "d609c29b44d8e1943e781c3c482a2f6f",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/data/local/DailyQuestEntity.kt": {
     "mtime": 1788509075.5434594,
-    "seen": 1788510536.1051173,
+    "seen": 1788513104.4995399,
     "ast_hash": "bbe11704dfaae97912eb35723a448330",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/data/local/QuestRepository.kt": {
     "mtime": 1788509141.517172,
-    "seen": 1788510536.1051257,
+    "seen": 1788513104.4995494,
     "ast_hash": "bdbf31f02b9fa0e55d6fc086fd82b34b",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/data/local/RunSessionDao.kt": {
     "mtime": 1788509099.519708,
-    "seen": 1788510536.1051276,
+    "seen": 1788513104.4995522,
     "ast_hash": "48fa351b9e4a05f255a9b5e5dad02d13",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/data/local/RunSessionEntity.kt": {
     "mtime": 1788509068.6632974,
-    "seen": 1788510536.1051295,
+    "seen": 1788513104.4995546,
     "ast_hash": "9147f50bcf3c6fc18367d3a5e5a01a4b",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/data/local/RunSessionRepository.kt": {
     "mtime": 1788509135.139709,
-    "seen": 1788510536.1051316,
+    "seen": 1788513104.4995575,
     "ast_hash": "ecc253543ad8e6d01643164a08fd8eea",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/data/local/UserDao.kt": {
     "mtime": 1788509095.077082,
-    "seen": 1788510536.1051333,
+    "seen": 1788513104.49956,
     "ast_hash": "1b1daf8c1c326a11e5d5a7b1df725061",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/data/local/UserProfileEntity.kt": {
     "mtime": 1788509062.6860256,
-    "seen": 1788510536.1051354,
+    "seen": 1788513104.4995627,
     "ast_hash": "8d0535239acae275f097db85e428a76b",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/core/data/local/UserProfileRepository.kt": {
     "mtime": 1788509130.6920834,
-    "seen": 1788510536.105137,
+    "seen": 1788513104.4995654,
     "ast_hash": "f3d30df1c1b2b6b88c0e50bd9e24491a",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/ui/achievements/AchievementsTab.kt": {
     "mtime": 1788510246.6593318,
-    "seen": 1788510536.1051667,
+    "seen": 1788513104.4996045,
     "ast_hash": "3bbf7b07d5bd1629fc78f25df4e06574",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/java/com/example/mobileapp/ui/auth/OnboardingScreen.kt": {
     "mtime": 1788509680.9038663,
-    "seen": 1788510536.1051705,
+    "seen": 1788513104.499609,
     "ast_hash": "4170e6a3e95880815f5e914329ea07ce",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/test/java/com/example/mobileapp/core/data/local/ProgressionLogicTest.kt": {
     "mtime": 1788510453.6368957,
-    "seen": 1788510536.1051953,
+    "seen": 1788513104.499639,
     "ast_hash": "3295505eb3bdf14dee0b6c1dd5fa4550",
     "semantic_hash": ""
   },
   ".agent-context.md": {
-    "mtime": 1788503980.7123508,
-    "seen": 1788510536.1052046,
-    "ast_hash": "fbaee10ca8f2752d46a2a1ba1212d901",
+    "mtime": 1788513030.6950133,
+    "seen": 1788513104.4996486,
+    "ast_hash": "1f8da68f32a5860177944bbd861d03bc",
     "semantic_hash": ""
   },
   "AGENTS.md": {
     "mtime": 1788502141.0145738,
-    "seen": 1788510536.1052086,
+    "seen": 1788513104.4996507,
     "ast_hash": "329fa0bff6248bb8957660639c8fe126",
     "semantic_hash": ""
   },
   "README.md": {
     "mtime": 1788503945.0985293,
-    "seen": 1788510536.10521,
+    "seen": 1788513104.4996533,
     "ast_hash": "d5d904f2432780f992b89016a236bd60",
     "semantic_hash": ""
   },
   "apps/api/README.md": {
     "mtime": 1788501510.8206708,
-    "seen": 1788510536.1052125,
+    "seen": 1788513104.4996552,
     "ast_hash": "b5a3a11c638ab23512147cfa7fd85467",
     "semantic_hash": ""
   },
   "apps/api/requirements.txt": {
     "mtime": 1788501510.8234317,
-    "seen": 1788510536.1052148,
+    "seen": 1788513104.4996564,
     "ast_hash": "9d654df71cb4a74691454a0055af6744",
     "semantic_hash": ""
   },
   "apps/app/README.md": {
     "mtime": 1788503932.6365917,
-    "seen": 1788510536.1052167,
+    "seen": 1788513104.4996593,
     "ast_hash": "a5d64611756279249ee0d15a4c7c586a",
     "semantic_hash": ""
   },
   "docs/agent_ledger.md": {
-    "mtime": 1788503988.9363096,
-    "seen": 1788510536.1052234,
-    "ast_hash": "2fea15a4a99e212fff7a3aaba8619148",
+    "mtime": 1788512945.8917673,
+    "seen": 1788513104.4996607,
+    "ast_hash": "9a4cb283cfbff37135f3954b8ec0788e",
     "semantic_hash": ""
   },
   "docs/architecture.md": {
     "mtime": 1788501510.8465254,
-    "seen": 1788510536.1052248,
+    "seen": 1788513104.4996634,
     "ast_hash": "d5abf17fc279b83bbef02a59e298b273",
     "semantic_hash": ""
   },
   "docs/backend-schema.md": {
     "mtime": 1788501510.8475113,
-    "seen": 1788510536.1052268,
+    "seen": 1788513104.4996657,
     "ast_hash": "e7e3660f410c1d83cad42667bb40d7b2",
     "semantic_hash": ""
   },
   "docs/capture-engine.md": {
     "mtime": 1788501510.8475113,
-    "seen": 1788510536.1052287,
+    "seen": 1788513104.499668,
     "ast_hash": "65c95c29f2d64fad100e334e2ef2d2f0",
     "semantic_hash": ""
   },
   "docs/docs/architecture/0001-project-grounding-and-territory-engine.md": {
     "mtime": 1788503957.8374655,
-    "seen": 1788510536.105231,
+    "seen": 1788513104.4996705,
     "ast_hash": "c098950f43403489fd68e352c4049b96",
     "semantic_hash": ""
   },
   "docs/hex-system.md": {
     "mtime": 1788501510.8475113,
-    "seen": 1788510536.105233,
+    "seen": 1788513104.4996772,
     "ast_hash": "17b51dfe292de98bd3a0478cfecb28ca",
     "semantic_hash": ""
   },
   "docs/persistence.md": {
     "mtime": 1788501510.8475113,
-    "seen": 1788510536.1052344,
+    "seen": 1788513104.4996796,
     "ast_hash": "0d2fc2ad75eb3a2437f135da56ecac32",
     "semantic_hash": ""
   },
   "docs/requirements.md": {
     "mtime": 1788508560.7632728,
-    "seen": 1788510536.1052368,
+    "seen": 1788513104.4996817,
     "ast_hash": "90ad1630e3c0475c378618a59b20d7c7",
     "semantic_hash": ""
   },
   "docs/sensors-and-simulators.md": {
     "mtime": 1788501510.8475113,
-    "seen": 1788510536.1052382,
+    "seen": 1788513104.4996839,
     "ast_hash": "8fd6535447f179e104f4e7ff0a856f2b",
     "semantic_hash": ""
   },
   "docs/todo.md": {
-    "mtime": 1788508664.0210254,
-    "seen": 1788510536.10524,
-    "ast_hash": "d1cdcf75a75f25e9973729bbaccce95c",
+    "mtime": 1788510551.1292703,
+    "seen": 1788513104.4996862,
+    "ast_hash": "1319b09cf5ec77d9213e651a613f4cc6",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/res/mipmap-hdpi/ic_launcher.webp": {
     "mtime": 1788501510.8424382,
-    "seen": 1788510536.1052415,
+    "seen": 1788513104.499688,
     "ast_hash": "39d9bb21eb48f128a71c3f01ad3cd427",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/res/mipmap-hdpi/ic_launcher_round.webp": {
     "mtime": 1788501510.8426814,
-    "seen": 1788510536.105243,
+    "seen": 1788513104.4996905,
     "ast_hash": "70d6f58af3c76ee221c829b1ce9daa04",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/res/mipmap-mdpi/ic_launcher.webp": {
     "mtime": 1788501510.8426814,
-    "seen": 1788510536.1052449,
+    "seen": 1788513104.4996922,
     "ast_hash": "d2acce71c7b46e5e9540d23a9f7b2166",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/res/mipmap-mdpi/ic_launcher_round.webp": {
     "mtime": 1788501510.8429317,
-    "seen": 1788510536.1052463,
+    "seen": 1788513104.4996946,
     "ast_hash": "6376acb48f96a855ee95c113cd7fd616",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/res/mipmap-xhdpi/ic_launcher.webp": {
     "mtime": 1788501510.8429317,
-    "seen": 1788510536.1052487,
+    "seen": 1788513104.4996967,
     "ast_hash": "bd087d80b70bec05a43c745f29dc3ffc",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/res/mipmap-xhdpi/ic_launcher_round.webp": {
     "mtime": 1788501510.8431458,
-    "seen": 1788510536.10525,
+    "seen": 1788513104.4996986,
     "ast_hash": "7479edd56ab712609f030054bffd7263",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/res/mipmap-xxhdpi/ic_launcher.webp": {
     "mtime": 1788501510.8431458,
-    "seen": 1788510536.1052516,
+    "seen": 1788513104.4997005,
     "ast_hash": "ea180e8d1a2e8300cc998b987266b736",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp": {
     "mtime": 1788501510.8433664,
-    "seen": 1788510536.1052537,
+    "seen": 1788513104.4997025,
     "ast_hash": "947842742b29eeda80ee0805e1600366",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/res/mipmap-xxxhdpi/ic_launcher.webp": {
     "mtime": 1788501510.8433664,
-    "seen": 1788510536.1052544,
+    "seen": 1788513104.4997048,
     "ast_hash": "54ab624970c86c2146e76b93f27586f7",
     "semantic_hash": ""
   },
   "apps/app/fitquest/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp": {
     "mtime": 1788501510.84359,
-    "seen": 1788510536.1052566,
+    "seen": 1788513104.4997065,
     "ast_hash": "9ee591be72fb336861a8044086054daa",
+    "semantic_hash": ""
+  },
+  "docs/docs/map/0001-maplibre-rendering-and-fallback.md": {
+    "mtime": 1788512911.079487,
+    "seen": 1788513104.4996724,
+    "ast_hash": "ce5781399733afd066fea86ecf290678",
+    "semantic_hash": ""
+  },
+  "docs/docs/ui/0001-offline-frontend-architecture.md": {
+    "mtime": 1788510560.8253179,
+    "seen": 1788513104.4996748,
+    "ast_hash": "bd564f65a620828c89da72876c84696c",
     "semantic_hash": ""
   }
 }

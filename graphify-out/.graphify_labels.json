@@ -3,9 +3,9 @@
   "1": "map/router.py",
   "2": "GeoPoint",
   "3": "seed.py",
-  "4": "CaptureScreenModel.kt",
+  "4": "AppModule.kt",
   "5": "users/router.py",
-  "6": "AppModule.kt",
+  "6": "HexRepository",
   "7": "OnboardingScreen.kt",
   "8": "StepSensorManager.kt",
   "9": "UserProfileEntity",
@@ -38,7 +38,9 @@
   "36": "Persistence",
   "37": "ProgressionLogicTest",
   "38": "FitQuest Hex Capture Prototype",
-  "39": "Emulator & Testing Notes",
-  "40": "Similar Apps & References",
-  "41": "FitQuest Agent Execution Ledger"
+  "39": "Decisions",
+  "40": "HexGeoJsonMapper",
+  "41": "FitQuest Agent Execution Ledger",
+  "42": "ADR 0001: MapLibre Rendering Lifecycle & Tile Fallback Architecture",
+  "43": "📡 API Contracts (Mobile App DTOs)"
 }
