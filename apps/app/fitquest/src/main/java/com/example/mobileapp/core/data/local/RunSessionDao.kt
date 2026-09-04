@@ -1,0 +1,28 @@
+package com.example.mobileapp.core.data.local
+
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
+
+@Dao
+interface RunSessionDao {
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertSession(session: RunSessionEntity)
+
+    @Query("SELECT * FROM run_sessions ORDER BY endedAt DESC")
+    fun observeAllSessions(): Flow<List<RunSessionEntity>>
+
+    @Query("SELECT * FROM run_sessions ORDER BY endedAt DESC LIMIT :limit")
+    fun observeRecentSessions(limit: Int = 10): Flow<List<RunSessionEntity>>
+
+    @Query("SELECT COUNT(*) FROM run_sessions")
+    fun observeSessionCount(): Flow<Int>
+
+    @Query("SELECT SUM(totalSteps) FROM run_sessions")
+    fun observeLifetimeSteps(): Flow<Int?>
+
+    @Query("SELECT SUM(distanceMeters) FROM run_sessions")
+    fun observeLifetimeDistance(): Flow<Double?>
+}

@@ -59,10 +59,29 @@ val appModule = module {
             get(),
             FitQuestDatabase::class.java,
             "fitquest.db"
-        ).build()
+        )
+            .fallbackToDestructiveMigration()
+            .build()
     }
     single { get<FitQuestDatabase>().hexDao() }
+    single { get<FitQuestDatabase>().userDao() }
+    single { get<FitQuestDatabase>().runSessionDao() }
+    single { get<FitQuestDatabase>().dailyQuestDao() }
+    single { get<FitQuestDatabase>().achievementDao() }
+
     single<HexRepository> { RoomHexRepository(get()) }
+    single<com.example.mobileapp.core.data.local.UserProfileRepository> { 
+        com.example.mobileapp.core.data.local.RoomUserProfileRepository(get()) 
+    }
+    single<com.example.mobileapp.core.data.local.RunSessionRepository> { 
+        com.example.mobileapp.core.data.local.RoomRunSessionRepository(get()) 
+    }
+    single<com.example.mobileapp.core.data.local.QuestRepository> { 
+        com.example.mobileapp.core.data.local.RoomQuestRepository(get(), get()) 
+    }
+    single<com.example.mobileapp.core.data.local.AchievementRepository> { 
+        com.example.mobileapp.core.data.local.RoomAchievementRepository(get(), get()) 
+    }
 
     single<HexIndexer> { UberH3HexIndexer() }
 
@@ -74,7 +93,7 @@ val appModule = module {
     // factory (not single) so Voyager can properly scope and dispose the
     // ScreenModel when the screen leaves the backstack. A singleton would keep
     // the Orbit container alive forever and cause stale state on re-entry.
-    factory { CaptureScreenModel(get(), get(), get(), get()) }
+    factory { CaptureScreenModel(get(), get(), get(), get(), get(), get(), get(), get()) }
 }
 
 

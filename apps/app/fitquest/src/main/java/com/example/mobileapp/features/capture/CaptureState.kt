@@ -1,16 +1,27 @@
 package com.example.mobileapp.features.capture
 
+import com.example.mobileapp.core.data.local.AchievementEntity
+import com.example.mobileapp.core.data.local.RunSessionEntity
 import com.example.mobileapp.core.model.GeoPoint
 import com.example.mobileapp.core.network.models.RunSyncSummary
 
 data class CaptureState(
     val isTracking: Boolean = false,
+    val isPaused: Boolean = false,
+    val durationSeconds: Long = 0L,
+    val distanceMeters: Double = 0.0,
+    val caloriesBurned: Int = 0,
     val currentLocation: GeoPoint? = null,
     val currentHexId: String? = null,
     val sessionSteps: Int = 0,
     val sessionCapturedHexes: List<String> = emptyList(),
     val historicalCapturedHexes: List<String> = emptyList(),
     val allCapturedHexes: List<String> = emptyList(),
+
+    // Post-Run Dialog State
+    val showSummaryDialog: Boolean = false,
+    val latestCompletedSession: RunSessionEntity? = null,
+    val unlockedAchievements: List<AchievementEntity> = emptyList(),
 
     // Network & Multiplayer Sync
     val syncSummary: RunSyncSummary? = null,
