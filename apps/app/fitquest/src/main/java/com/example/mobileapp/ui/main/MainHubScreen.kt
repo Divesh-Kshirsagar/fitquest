@@ -15,7 +15,7 @@ import cafe.adriel.voyager.navigator.tab.CurrentTab
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabNavigator
-import com.example.mobileapp.ui.friends.FriendsTab
+import com.example.mobileapp.ui.achievements.AchievementsTab
 import com.example.mobileapp.ui.home.HomeTab
 import com.example.mobileapp.ui.leaderboard.LeaderboardTab
 import com.example.mobileapp.ui.profile.ProfileTab
@@ -30,7 +30,7 @@ class MainHubScreen : Screen {
                     NavigationBar {
                         TabNavigationItem(HomeTab)
                         TabNavigationItem(LeaderboardTab)
-                        TabNavigationItem(FriendsTab)
+                        TabNavigationItem(AchievementsTab)
                         TabNavigationItem(ProfileTab)
                     }
                 }
