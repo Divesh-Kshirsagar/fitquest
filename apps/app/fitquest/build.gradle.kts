@@ -52,14 +52,14 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         val mapTilerApiKey = envOrDefault("MAPTILER_API_KEY")
-        val defaultMapStyleUrl = "https://api.maptiler.com/maps/streets-v2/style.json?key=$mapTilerApiKey"
+        val defaultMapStyleUrl = if (mapTilerApiKey.isNotEmpty()) {
+            "https://api.maptiler.com/maps/streets-v2/style.json?key=$mapTilerApiKey"
+        } else {
+            "https://demotiles.maplibre.org/style.json"
+        }
         val mapTilerStyleUrl = envOrDefault("MAPTILER_STYLE_URL", defaultMapStyleUrl)
         buildConfigField("String", "MAPTILER_API_KEY", "\"$mapTilerApiKey\"")
         buildConfigField("String", "MAPTILER_STYLE_URL", "\"$mapTilerStyleUrl\"")
-
-        if (mapTilerApiKey.isEmpty()) {
-            logger.warn("MAPTILER_API_KEY is empty. Map tiles will fail to load.")
-        }
     }
 
     buildTypes {

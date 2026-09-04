@@ -50,7 +50,7 @@ val appModule = module {
     //  - useDevLocation = true  → mock GPS walk path (see DevLocationSimulator.DEFAULT_WALK_PATH)
     //  - useDevSteps    = true  → synthetic 2-steps-per-second stream
     //  Set BOTH to `false` for real device testing with actual GPS + step counter.
-    val useDevLocation = false
+    val useDevLocation = true
     val useDevSteps = true
     // ─────────────────────────────────────────────────────────────────────────
 

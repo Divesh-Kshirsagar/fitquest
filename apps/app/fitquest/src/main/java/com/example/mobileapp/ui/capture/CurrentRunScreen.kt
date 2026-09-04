@@ -389,16 +389,40 @@ private fun CaptureMap(
     var mapView by remember { mutableStateOf<MapView?>(null) }
 
     LaunchedEffect(Unit) {
-        // This runs after the first frame is drawn, so the loading indicator shows immediately.
+        val styleUrl = if (BuildConfig.MAPTILER_API_KEY.isNotBlank()) {
+            BuildConfig.MAPTILER_STYLE_URL
+        } else {
+            "https://demotiles.maplibre.org/style.json"
+        }
+
         val options = MapLibreMapOptions.createFromAttributes(context)
-            .textureMode(true) // TextureView avoids BLASTBufferQueue "Can't acquire" log spam
+            .textureMode(true)
         val view = MapView(context, options).apply {
             onCreate(null)
+            onStart()
+            onResume()
             getMapAsync { mapLibreMap ->
-                mapLibreMap.setStyle(Style.Builder().fromUri(BuildConfig.MAPTILER_STYLE_URL)) { style ->
+                val initialLocation = state.currentLocation?.let { LatLng(it.latitude, it.longitude) }
+                    ?: LatLng(28.6315, 77.2167)
+
+                mapLibreMap.cameraPosition = CameraPosition.Builder()
+                    .target(initialLocation)
+                    .zoom(16.0)
+                    .build()
+
+                mapLibreMap.setStyle(Style.Builder().fromUri(styleUrl)) { style ->
                     ensureHexLayers(style)
+                    if (state.nearbyHexGeoJson.isNotEmpty()) {
+                        style.getSourceAs<GeoJsonSource>(NEARBY_HEX_SOURCE_ID)?.setGeoJson(state.nearbyHexGeoJson)
+                    }
+                    if (state.capturedHexGeoJson.isNotEmpty()) {
+                        style.getSourceAs<GeoJsonSource>(HEX_SOURCE_ID)?.setGeoJson(state.capturedHexGeoJson)
+                    }
+                    if (state.currentHexGeoJson.isNotEmpty()) {
+                        style.getSourceAs<GeoJsonSource>(CURRENT_HEX_SOURCE_ID)?.setGeoJson(state.currentHexGeoJson)
+                    }
                 }
-                
+
                 // Add Map Idle Listener for Backend Sync
                 mapLibreMap.addOnCameraIdleListener {
                     val bounds = mapLibreMap.projection.visibleRegion.latLngBounds
@@ -512,19 +536,6 @@ private fun CaptureMap(
                     )
                 }
             }
-        }
-
-        if (BuildConfig.MAPTILER_API_KEY.isBlank()) {
-            Text(
-                text = "MapTiler key missing (.env)",
-                color = Color.White,
-                modifier = Modifier
-                    .align(Alignment.TopStart)
-                    .statusBarsPadding()
-                    .padding(12.dp)
-                    .background(Color(0xAA000000))
-                    .padding(horizontal = 10.dp, vertical = 6.dp)
-            )
         }
     }
 }

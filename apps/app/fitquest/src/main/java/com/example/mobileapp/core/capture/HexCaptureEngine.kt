@@ -15,6 +15,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+import com.example.mobileapp.core.dev.DevLocationSimulator
+
 data class HexCaptureSnapshot(
     val isTracking: Boolean = false,
     val currentHexId: String? = null,
@@ -39,7 +41,23 @@ class HexCaptureEngine(
     private val nearbyRingSize = 2
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
-    private val _state = MutableStateFlow(HexCaptureSnapshot())
+    private val _state = MutableStateFlow(
+        run {
+            val initialPoint = DevLocationSimulator.DEFAULT_WALK_PATH.first()
+            val initialHex = if (hexIndexer.isAvailable()) {
+                hexIndexer.latLngToHexId(initialPoint.latitude, initialPoint.longitude, h3Resolution)
+            } else null
+            val initialNearby = if (hexIndexer.isAvailable()) {
+                hexIndexer.getHexesInRadius(initialPoint.latitude, initialPoint.longitude, h3Resolution, nearbyRingSize)
+            } else emptyList()
+
+            HexCaptureSnapshot(
+                currentLocation = initialPoint,
+                currentHexId = initialHex,
+                nearbyHexIds = initialNearby
+            )
+        }
+    )
     val state: StateFlow<HexCaptureSnapshot> = _state.asStateFlow()
 
     private var locationJob: Job? = null
